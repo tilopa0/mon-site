@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Momen'Tea | L'Équilibre et Réunion</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #F8FAF9;
+            --text-main: #313131;
+            --text-muted: #4a4a4a;
+            --steel: linear-gradient(90deg, #d1d1d1, #f8f8f8, #d1d1d1);
+            --steel-border: rgba(0, 0, 0, 0.08);
+            --glass-bg: rgba(255, 255, 255, 0.4);
+            --glass-border: rgba(255, 255, 255, 0.3);
+            --transition-smooth: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* --- UTILITIES --- */
+        .glass {
+            background: var(--glass-bg);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 0.5px solid var(--steel-border);
+            border-radius: 20px;
+        }
+
+        .steel-btn {
+            position: relative;
+            padding: 0.8rem 2.5rem;
+            background: var(--bg-color);
+            border: 0.5px solid var(--steel-border);
+            color: #B42946; /* Set button text color to #B42946 */
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+            border-radius: 50px; /* Pill-shape for Apple-like aesthetic */
+            overflow: hidden;
+            transition: var(--transition-smooth);
+            text-decoration: none;
+            display: inline-block;
+            font-size: 0.85rem;
+        }
+
+        .steel-btn:hover {
+            background: var(--steel);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            color: #313131; /* Change color on hover */
+        }
+
+        .section-padding {
+            padding: 8rem 10%;
+            border-bottom: 0.5px solid var(--steel-border); /* Fine horizontal dividers */
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: var(--transition-smooth);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        h1 { font-size: 40px; font-weight: 800; letter-spacing: -1px; margin-bottom: 1rem; color: #313131; }
+        h2 { font-size: 25px; font-weight: 400; color: var(--text-muted); margin-bottom: 1.5rem; }
+        h3 { font-size: 1.1rem; font-weight: 600; }
+
+        /* --- NAVIGATION --- */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            mix-blend-mode: difference;
+            color: white;
+        }
+
+        .logo {
+            font-weight: 800;
+            font-size: 1.2rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .burger {
+            width: 25px;
+            height: 12px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .burger span {
+            display: block;
+            width: 100%;
+            height: 1px;
+            background: currentColor;
+            transition: var(--transition-smooth);
+        }
+
+        .nav-overlay {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 100%;
+            height: 100vh;
+            background: rgba(255, 255, 255, 0.98);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: var(--transition-smooth);
+            z-index: 999;
+        }
+
+        .nav-overlay.open {
+            right: 0;
+        }
+
+        .nav-overlay a {
+            font-size: 2rem;
+            font-weight: 300;
+            text-decoration: none;
+            color: var(--text-main);
+            margin: 1rem 0;
+            transition: var(--transition-smooth);
+        }
+
+        /* --- HERO --- */
+        #hero {
+            min-height: 150vh; /* Accommodate massive image */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            background: var(--bg-color);
+            overflow: visible;
+            border-bottom: none;
+            padding-bottom: 20vh;
+        }
+
+        /* --- DRINK CARDS & GRID --- */
+        #menuGrid::-webkit-scrollbar {
+            display: none;
+        }
+
+        .drink-card {
+            flex: 0 0 350px;
+            scroll-snap-align: center;
+            text-align: center;
+            padding: 1rem;
+            transition: var(--transition-smooth);
+            border-radius: 40px;
+            background: #ffffff;
+            border: 0.5px solid var(--steel-border);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+        }
+
+        .drink-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.05);
+        }
+
+        .menu-static-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 3rem;
+            align-items: end;
+        }
+
+        .menu-item {
+            transition: var(--transition-smooth);
+            border-radius: 30px;
+            overflow: hidden;
+        }
+
+        .menu-item img {
+            width: 100%;
+            height: auto;
+            border-radius: 30px;
+            display: block;
+        }
+
+        .menu-item:hover {
+            transform: scale(1.03);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.05);
+        }
+
+        @media (max-width: 1024px) {
+            .menu-static-grid { grid-template-columns: repeat(2, 1fr) !important; }
+        }
+
+        /* --- ACCORDION --- */
+        .accordion-item {
+            border-bottom: 0.5px solid var(--steel-border);
+            padding: 2rem 0;
+            cursor: pointer;
+        }
+
+        .accordion-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: var(--transition-smooth);
+            color: var(--text-muted);
+            margin-top: 1rem;
+        }
+
+        .accordion-item.active .accordion-content {
+            max-height: 500px;
+        }
+
+        /* --- JOBS FORM --- */
+        .form-container {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 4rem;
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            background: transparent;
+            border: 0.5px solid var(--steel-border);
+            font-family: inherit;
+            transition: var(--transition-smooth);
+            border-radius: 8px;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--text-main);
+            background: white;
+        }
+
+        .file-upload {
+            border: 1px dashed var(--steel-border);
+            padding: 2rem;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            border-radius: 8px;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            padding: 4rem 10%;
+            text-align: center;
+        }
+
+        .eco-mention {
+            font-size: 0.7rem;
+            color: #888;
+            max-width: 500px;
+            margin: 2rem auto 0;
+            line-height: 1.4;
+        }
+
+        /* --- MOBILE --- */
+        @media (max-width: 768px) {
+            .section-padding { padding: 5rem 8%; }
+            h1 { font-size: 32px; }
+            h2 { font-size: 20px; }
+            .form-container { padding: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">Momen'Tea</div>
+        <div class="burger" id="burger">
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <div class="nav-overlay" id="navOverlay">
+        <a href="#hero">Accueil</a>
+        <a href="#collection">Menu</a>
+        <a href="#loyalty">Loyauté</a>
+        <a href="#jobs">Jobs</a>
+        <a href="#explore">Histoire & Culture</a>
+        <a href="#quality">Qualite&Confianse</a>
+        <a href="#contact">Contacts</a>
+    </div>
+
+    <section id="hero" style="position: relative; min-height: 100vh; overflow: visible; display: flex; align-items: center; justify-content: flex-start; padding-left: 8%;">
+        <!-- Image as background/underlay spanning sections -->
+        <img src="images/Home_image.png" alt="" style="position: absolute; top: 0; right: 0; width: 100%; height: 160%; object-fit: contain; object-position: right top; z-index: 1; pointer-events: none;">
+        
+        <div class="reveal" style="position: absolute; left: calc(50% - 190px); top: 50%; transform: translate(-50%, -50%); z-index: 5; width: 450px; display: flex; flex-direction: column; align-items: center; text-align: center;">
+            <h1 style="font-size: 50px; line-height: 1.1; margin-bottom: 1.5rem;">L’icône<br>de ton été</h1>
+            <h2 style="margin-bottom: 2.5rem; font-size: 22px;">Pur goût. Zéro filtre.</h2>
+            <a href="#collection" class="steel-btn">Menu</a>
+        </div>
+    </section>
+
+    <section id="shop" class="section-padding" style="text-align: center; background: transparent; border-top: none; padding-top: 10rem; position: relative; z-index: 5;">
+        <div class="reveal">
+            <h1 style="margin-bottom: 1rem;">Momen'Tea</h1>
+            <h2 style="margin-bottom: 3rem;">Le Bubble Tea qui redéfinit tes standards</h2>
+            <a href="#contact" class="steel-btn">Trouver shop</a>
+        </div>
+    </section>
+
+    <section id="collection" class="section-padding" style="position: relative; overflow: hidden;">
+        <h1 class="reveal" style="margin-bottom: 4rem;">NOUVEAUTÉS Saisonnières</h1>
+        
+        <!-- Carousel Navigation -->
+        <div class="carousel-nav" style="position: absolute; top: 8rem; right: 10%; display: flex; gap: 1rem; z-index: 10;">
+            <button id="prevBtn" class="steel-btn" style="padding: 0.5rem 1.2rem; border-radius: 50%; font-size: 1.2rem;">←</button>
+            <button id="nextBtn" class="steel-btn" style="padding: 0.5rem 1.2rem; border-radius: 50%; font-size: 1.2rem;">→</button>
+        </div>
+
+        <div class="menu-grid" id="menuGrid" style="display: flex; flex-wrap: nowrap; overflow-x: auto; scroll-behavior: smooth; scroll-snap-type: x mandatory; gap: 2rem; padding-bottom: 2rem; scrollbar-width: none; -ms-overflow-style: none;">
+            <!-- Seasonal Items -->
+            <div class="drink-card reveal">
+                <div class="drink-circle" style="background: none; border: none; height: 350px; width: 100%; border-radius: 30px; overflow: hidden;">
+                    <img src="images/collection_1.png" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <h3 style="margin-top: 1.5rem;">Éclat de Pêche</h3>
+            </div>
+            <div class="drink-card reveal">
+                <div class="drink-circle" style="background: none; border: none; height: 350px; width: 100%; border-radius: 30px; overflow: hidden;">
+                    <img src="images/collection_2.png" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <h3 style="margin-top: 1.5rem;">Nuage de Taro</h3>
+            </div>
+            <div class="drink-card reveal">
+                <div class="drink-circle" style="background: none; border: none; height: 350px; width: 100%; border-radius: 30px; overflow: hidden;">
+                    <img src="images/collection_3.png" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <h3 style="margin-top: 1.5rem;">Matcha Infini</h3>
+            </div>
+            <div class="drink-card reveal">
+                <div class="drink-circle" style="background: none; border: none; height: 350px; width: 100%; border-radius: 30px; overflow: hidden;">
+                    <img src="images/collection_4.png" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <h3 style="margin-top: 1.5rem;">Passion Givrée</h3>
+            </div>
+            <div class="drink-card reveal">
+                <div class="drink-circle" style="background: none; border: none; height: 350px; width: 100%; border-radius: 30px; overflow: hidden;">
+                    <img src="images/collection_5.jpg" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <h3 style="margin-top: 1.5rem;">Mystère Oolong</h3>
+            </div>
+        </div>
+    </section>
+
+    <section id="main-menu" class="section-padding">
+        <h1 class="reveal">Menu</h1>
+        <h2 class="reveal" style="margin-bottom: 4rem;">Choisis ton mood.</h2>
+        
+        <div class="menu-static-grid reveal">
+            <!-- ROW 1 -->
+            <div class="menu-item"><img src="images/menu/Boisson_01.png" style="width: 100%; height: auto;"></div>
+            <div class="menu-item"><img src="images/menu/Boisson_02.png" style="width: 100%; height: auto;"></div>
+            <div class="menu-item"><img src="images/menu/Boisson_03.png" style="width: 100%; height: auto;"></div>
+            <div class="menu-item"><img src="images/menu/Boisson_04.png" style="width: 100%; height: auto;"></div>
+            <!-- ROW 2 -->
+            <div class="menu-item"><img src="images/menu/Boisson_05.png" style="width: 100%; height: auto;"></div>
+            <div class="menu-item"><img src="images/menu/Boisson_06.png" style="width: 100%; height: auto;"></div>
+            <div class="menu-item"><img src="images/menu/Boisson_07.png" style="width: 100%; height: auto;"></div>
+            <div class="menu-item"><img src="images/menu/Boisson_08.png" style="width: 100%; height: auto;"></div>
+            <!-- ROW 3 -->
+            <div class="menu-item"><img src="images/menu/Boisson_09.png" style="width: 100%; height: auto;"></div>
+            <div class="menu-item"><img src="images/menu/Boisson_10.png" style="width: 100%; height: auto;"></div>
+            <div class="menu-item"><img src="images/menu/Boisson_11.png" style="width: 100%; height: auto;"></div>
+            <div class="menu-item"><img src="images/menu/Boisson_12.png" style="width: 100%; height: auto;"></div>
+            <!-- ROW 4 -->
+            <div class="menu-item"><img src="images/menu/Boisson_13.png" style="width: 100%; height: auto;"></div>
+            <div class="menu-item"><img src="images/menu/Boisson_14.png" style="width: 100%; height: auto;"></div>
+            <div class="menu-item"><img src="images/menu/Boisson_15.png" style="width: 100%; height: auto;"></div>
+            <div class="menu-item"><img src="images/menu/Boisson_16.png" style="width: 100%; height: auto;"></div>
+        </div>
+    </section>
+
+    <section id="explore" class="section-padding">
+        <h1 class="reveal">Notre Mission</h1>
+        <h3 class="reveal" style="max-width: 800px; font-weight: 400; line-height: 1.6; color: var(--text-main); margin-top: 2rem;">
+            Un goût respectueux de la planète. Nous créons une nouvelle génération de bubble tea : des ingrédients naturels, une démarche écoresponsable et une esthétique soignée dans les moindres détails. Buvez en toute conscience, vivez pleinement.
+        </h3>
+    </section>
+
+    <section id="history" class="section-padding" style="background: #ffffff;">
+        <h1 class="reveal" style="margin-bottom: 5rem;">Notre Histoire</h1>
+        
+        <div class="timeline-container" style="position: relative; max-width: 900px; margin: 0 auto; padding-left: 50px;">
+            <!-- The Vertical Line -->
+            <div style="position: absolute; left: 20px; top: 0; bottom: 0; width: 1px; background: linear-gradient(to bottom, transparent, #d1d1d1 10%, #d1d1d1 90%, transparent);"></div>
+
+            <!-- 2012 -->
+            <div class="reveal" style="position: relative; margin-bottom: 1.5cm; padding-left: 40px;">
+                <div style="position: absolute; left: -34px; top: 10px; width: 12px; height: 12px; border-radius: 50%; background: #ffffff; border: 0.5px solid #313131; z-index: 2;"></div>
+                <h3 style="font-weight: 800; margin-bottom: 1rem;">2012 — La première gorgée</h3>
+                <p style="color: var(--text-muted); font-size: 1rem;">A commencé au cœur de Paris. Nous avons ouvert les portes du premier corner Momen’Tea avec un objectif simple : réinterpréter les traditions asiatiques à travers le prisme de l’esthétique française. Un petit espace, mais de grandes ambitions.</p>
+            </div>
+
+            <!-- 2014 -->
+            <div class="reveal" style="position: relative; margin-bottom: 1.5cm; padding-left: 40px;">
+                <div style="position: absolute; left: -34px; top: 10px; width: 12px; height: 12px; border-radius: 50%; background: #ffffff; border: 0.5px solid #313131; z-index: 2;"></div>
+                <h3 style="font-weight: 800; margin-bottom: 1rem;">2014 — La percée biologique</h3>
+                <p style="color: var(--text-muted); font-size: 1rem;">Nous avons été parmi les premiers à abandonner les sirops artificiels. L’obtention de la certification Bio Europe a confirmé notre engagement : uniquement du thé naturel and des fruits frais. La même année, deux nouveaux points de vente voient le jour à Lyon.</p>
+            </div>
+
+            <!-- 2017 -->
+            <div class="reveal" style="position: relative; margin-bottom: 1.5cm; padding-left: 40px;">
+                <div style="position: absolute; left: -34px; top: 10px; width: 12px; height: 12px; border-radius: 50%; background: #ffffff; border: 0.5px solid #313131; z-index: 2;"></div>
+                <h3 style="font-weight: 800; margin-bottom: 1rem;">2017 — L’expansion du style</h3>
+                <p style="color: var(--text-muted); font-size: 1rem;">Momen’Tea dépasse les frontières de la capitale. Ouvertures à Bordeaux and Marseille. Nous sommes déjà 5, and chaque boutique est un projet de design unique, où le minimalisme rencontre le confort.</p>
+            </div>
+
+            <!-- 2019 -->
+            <div class="reveal" style="position: relative; margin-bottom: 1.5cm; padding-left: 40px;">
+                <div style="position: absolute; left: -34px; top: 10px; width: 12px; height: 12px; border-radius: 50%; background: #ffffff; border: 0.5px solid #313131; z-index: 2;"></div>
+                <h3 style="font-weight: 800; margin-bottom: 1rem;">2019 — Le gage de qualité</h3>
+                <p style="color: var(--text-muted); font-size: 1rem;">Obtention du label Saveur de l’Année. Nos recettes sont plébiscitées par les experts and, plus important encore, par nos clients. Nous ouvrons notre 8ème boutique à Strasbourg.</p>
+            </div>
+
+            <!-- 2020-2021 -->
+            <div class="reveal" style="position: relative; margin-bottom: 1.5cm; padding-left: 40px;">
+                <div style="position: absolute; left: -34px; top: 10px; width: 12px; height: 12px; border-radius: 50%; background: #ffffff; border: 0.5px solid #313131; z-index: 2;"></div>
+                <h3 style="font-weight: 800; margin-bottom: 1rem;">2020–2021 — Résilience</h3>
+                <p style="color: var(--text-muted); font-size: 1rem;">La pandémie a été un véritable défi. Nous avons fermé nos salles, mais ouvert de nouvelles opportunités : lancement de la livraison sans contact and développement d’emballages biodégradables. Nous avons tenu bon grâce à vous.</p>
+            </div>
+
+            <!-- 2023 -->
+            <div class="reveal" style="position: relative; margin-bottom: 1.5cm; padding-left: 40px;">
+                <div style="position: absolute; left: -34px; top: 10px; width: 12px; height: 12px; border-radius: 50%; background: #ffffff; border: 0.5px solid #313131; z-index: 2;"></div>
+                <h3 style="font-weight: 800; margin-bottom: 1rem;">2023 — Un nouveau souffle</h3>
+                <p style="color: var(--text-muted); font-size: 1rem;">Après la pandémie, nous avons opéré un rebranding complet. Ce style minimaliste que vous voyez aujourd’hui — le « Apple du bubble tea ». Ouverture de notre 10ème point de vente anniversaire à Toulouse.</p>
+            </div>
+
+            <!-- 2026 -->
+            <div class="reveal" style="position: relative; padding-left: 40px;">
+                <div style="position: absolute; left: -34px; top: 10px; width: 12px; height: 12px; border-radius: 50%; background: #ffffff; border: 0.5px solid #313131; z-index: 2;"></div>
+                <h3 style="font-weight: 800; margin-bottom: 1rem;">2026 — 11 boutiques et une mission</h3>
+                <p style="color: var(--text-muted); font-size: 1rem;">Aujourd’hui, Momen’Tea, ce sont 11 espaces à travers la France. Nous ne vendons pas seulement du bubble tea, nous créons l’esthétique de votre quotidien. Nous continuons de grandir, fidèles à notre qualité and à votre vibe.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="culture" class="section-padding">
+        <h1 class="reveal">Bubble Tea Culture</h1>
+        <p class="reveal" style="margin: 2rem 0; color: var(--text-main); font-size: 1.1rem; max-width: 800px; line-height: 1.8;">
+            On le reconnaît au premier coup d’œil. Sa couleur, ses perles qui roulent au fond du verre, sa paille XXL… Le bubble tea a quelque chose d’immédiatement familier, même pour ceux qui n’en ont jamais bu. Pourtant, derrière cette esthétique très instagrammable se cache une vraie histoire — celle d’une culture du thé millénaire qui a su se réinventer.<br><br>
+            Comprendre l’origine du bubble tea, c’est remonter à la source : un salon de thé taïwanais, une idée un peu folle, and un verre qui a tout changé.
+        </p>
+        <a href="#" class="steel-btn reveal">Découvrir la Culture</a>
+    </section>
+
+    <section id="loyalty" class="section-padding glass" style="margin: 4rem 10%; border-radius: 40px; text-align: center;">
+        <div class="reveal">
+            <h1 style="margin-bottom: 0.5rem;">Rejoins le Momen’Tea Club</h1>
+            <h2 style="margin-bottom: 2rem;">Ta fidélité mérite du style.</h2>
+            <p style="max-width: 600px; margin: 0 auto 3rem; color: var(--text-muted);">Parce que chaque moment compte, nous avons créé un programme qui te ressemble.</p>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; margin-bottom: 4rem; text-align: left;">
+                <div class="glass" style="padding: 2rem; border-radius: 25px;">
+                    <h3 style="margin-bottom: 1rem; font-weight: 800;">10 + 1</h3>
+                    <p style="font-size: 0.9rem;">Ton 11ème bubble tea est offert.</p>
+                </div>
+                <div class="glass" style="padding: 2rem; border-radius: 25px;">
+                    <h3 style="margin-bottom: 1rem; font-weight: 800;">Early Access</h3>
+                    <p style="font-size: 0.9rem;">Recettes exclusives.</p>
+                </div>
+                <div class="glass" style="padding: 2rem; border-radius: 25px;">
+                    <h3 style="margin-bottom: 1rem; font-weight: 800;">Vibe Check</h3>
+                    <p style="font-size: 0.9rem;">-10% pour toi and tes amis.</p>
+                </div>
+            </div>
+
+            <a href="#" class="steel-btn">Rejoindre le cercle</a>
+            
+            <p style="margin-top: 2rem; font-size: 0.75rem; color: #888; font-style: italic;">
+                *Prêt à collectionner les moments ? Demande ta carte digitale au comptoir ou inscris-toi en un clic. 100% Digital. 0% papier. Bon pour toi, bon pour la planète.
+            </p>
+        </div>
+    </section>
+
+    <section id="work-with-us" class="section-padding" style="text-align: center;">
+        <h2 class="reveal" style="font-weight: 600; text-transform: uppercase; letter-spacing: 2px; font-size: 1rem;">Fidélité & Jobs</h2>
+        <h1 class="reveal" style="font-size: 50px; margin: 1rem 0;">Work with style</h1>
+        <h2 class="reveal" style="max-width: 800px; margin: 0 auto 3rem;">Tu peux non seulement être notre client, mais aussi découvrir les saveurs uniques de Bubble Team. Ensemble, rendons nos vies plus savoureuses.</h2>
+        <a href="#jobs" class="steel-btn reveal">Trouver plus</a>
+    </section>
+
+    <section id="jobs" class="section-padding">
+        <div class="form-container glass reveal">
+            <h1 style="margin-bottom: 0.5rem;">Momen'Team</h1>
+            <h2 style="margin-bottom: 3rem;">Rejoignez l'élite du service.</h2>
+            
+            <form id="recruitmentForm">
+                <div class="form-group">
+                    <label>Nom Complet</label>
+                    <input type="text" placeholder="Olga Popova" required>
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" placeholder="contact@momentea.com" required>
+                </div>
+                <div class="form-group">
+                    <label>Boutique souhaitée</label>
+                    <input type="text" placeholder="Paris, Lyon, Bordeaux...">
+                </div>
+                <div class="form-group">
+                    <label>Votre "Mood" en une phrase</label>
+                    <textarea rows="3" placeholder="Ce qui vous définit..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Curriculum Vitae / LM</label>
+                    <div class="file-upload" id="fileUpload">
+                        Cliquez ou déposez votre fichier (PDF/DOCX)
+                    </div>
+                    <input type="file" id="fileInput" style="display: none;">
+                </div>
+                <button type="submit" class="steel-btn" style="width: 100%;">Envoyer ma candidature</button>
+            </form>
+            <div id="formSuccess" style="display: none; text-align: center; padding: 2rem;">
+                <h1>Merci pour votre audace.</h1>
+                <p>Votre candidature est entre les mains de nos experts. Préparez-vous à l'excellence.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="quality" class="section-padding">
+        <h1 class="reveal">Qualité & Confiance</h1>
+        <h2 class="reveal">Nos engagements and certifications</h2>
+        
+        <div class="reveal" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 3rem; margin-top: 4rem;">
+            <div class="glass" style="padding: 2rem;">
+                <h3 style="margin-bottom: 1rem;">Normes Alimentaires</h3>
+                <p style="font-size: 0.9rem; color: var(--text-muted);">Tous nos produits respectent scrupuleusement les normes de sécurité alimentaire françaises and européennes. Certificats de conformité disponibles sur demande.</p>
+            </div>
+            <div class="glass" style="padding: 2rem;">
+                <h3 style="margin-bottom: 1rem;">Transparence RGPD</h3>
+                <p style="font-size: 0.9rem; color: var(--text-muted);">Vos données sont précieuses. Nous appliquons une politique de confidentialité rigoureuse pour protéger vos informations personnelles en toute transparence.</p>
+            </div>
+            <div class="glass" style="padding: 2rem;">
+                <h3 style="margin-bottom: 1rem;">Mentions Légales</h3>
+                <p style="font-size: 0.9rem; color: var(--text-muted);">Momen'Tea SAS. Capital de 100 000€. RCS Paris B 123 456 789. Siège social : 12 Rue de la Paix, 75002 Paris.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section-padding">
+        <h1 class="reveal">Nos 11 Boutiques</h1>
+        <div class="reveal" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; margin-top: 4rem;">
+            <div>
+                <strong>Paris Flagship</strong><br>
+                12 Rue de la Paix<br>
+                75002 Paris
+            </div>
+            <div>
+                <strong>Lyon Confluence</strong><br>
+                112 Cours Charlemagne<br>
+                69002 Lyon
+            </div>
+            <div>
+                <strong>Bordeaux Centre</strong><br>
+                45 Rue de la Porte Dijeaux<br>
+                33000 Bordeaux
+            </div>
+             <div style="color: #888; font-style: italic;">+ 8 autres adresses en France</div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="logo">Momen'Tea</div>
+        <p style="margin-top: 1rem; font-size: 0.8rem;">Qualité & Confiance © 2024</p>
+        <p class="eco-mention">
+            Moins de code, plus de sens. Nous avons conçu ce site en limitant les fonctions énergivores pour réduire notre empreinte numérique and préserver les ressources de la planète. L'essentiel, tout simplement.
+        </p>
+    </footer>
+
+    <script>
+        // --- BURGER MENU ---
+        const burger = document.getElementById('burger');
+        const navOverlay = document.getElementById('navOverlay');
+        const navLinks = navOverlay.querySelectorAll('a');
+
+        burger.addEventListener('click', () => {
+            navOverlay.classList.toggle('open');
+            burger.classList.toggle('active');
+            if(navOverlay.classList.contains('open')) {
+                burger.children[0].style.transform = "translateY(5px) rotate(45deg)";
+                burger.children[1].style.transform = "translateY(-6px) rotate(-45deg)";
+            } else {
+                burger.children[0].style.transform = "none";
+                burger.children[1].style.transform = "none";
+            }
+        });
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navOverlay.classList.remove('open');
+                burger.children[0].style.transform = "none";
+                burger.children[1].style.transform = "none";
+            });
+        });
+
+        // --- FILE UPLOAD MOCK ---
+        const fileUpload = document.getElementById('fileUpload');
+        const fileInput = document.getElementById('fileInput');
+        if(fileUpload) {
+            fileUpload.addEventListener('click', () => fileInput.click());
+            fileInput.addEventListener('change', () => {
+                if(fileInput.files.length > 0) {
+                    fileUpload.textContent = fileInput.files[0].name;
+                }
+            });
+        }
+
+        // --- FORM SUBMISSION ---
+        const form = document.getElementById('recruitmentForm');
+        const success = document.getElementById('formSuccess');
+        if(form) {
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                form.style.display = 'none';
+                success.style.display = 'block';
+                success.classList.add('reveal', 'active');
+            });
+        }
+
+        // --- CAROUSEL ROTATION ---
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const carousel = document.getElementById('menuGrid');
+
+        if(prevBtn && nextBtn && carousel) {
+            nextBtn.addEventListener('click', () => {
+                carousel.scrollBy({ left: 320, behavior: 'smooth' });
+            });
+            prevBtn.addEventListener('click', () => {
+                carousel.scrollBy({ left: -320, behavior: 'smooth' });
+            });
+        }
+
+        // --- SCROLL REVEAL (Intersection Observer) ---
+        const observerOptions = { threshold: 0.1 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
