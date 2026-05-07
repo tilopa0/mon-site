@@ -313,6 +313,40 @@
             h1 { font-size: 32px; }
             h2 { font-size: 20px; }
             .form-container { padding: 2rem; }
+
+            /* Hero adjustments for mobile */
+            #hero {
+                min-height: 100vh;
+                padding-left: 0;
+                justify-content: center;
+                align-items: flex-end; /* Push content to bottom to not cover image top */
+                padding-bottom: 10vh;
+            }
+
+            #hero img {
+                height: 100% !important;
+                width: 100% !important;
+                object-position: center top !important;
+                opacity: 0.6; /* Slight fade to make text more readable */
+            }
+
+            #hero .reveal {
+                position: relative !important;
+                left: 0 !important;
+                top: 0 !important;
+                transform: none !important;
+                width: 90% !important;
+                margin: 0 auto;
+            }
+
+            #hero h1 {
+                font-size: 38px;
+            }
+
+            /* Menu Grid adjustments */
+            .menu-static-grid {
+                gap: 1.5rem;
+            }
         }
     </style>
 </head>
