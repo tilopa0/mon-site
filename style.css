@@ -1,11 +1,6 @@
 /* =========================================================================
-   MANITAS CERAMIC STUDIO - FINAL CORRECTED STYLES
+   MANITAS CERAMIC STUDIO - ULTIMATE MODERN LAYOUT
    ========================================================================= */
-
-/* 
-   ПРИМЕЧАНИЕ: Шрифты подключаются через functions.php.
-   Это гарантирует их работу в предпросмотре и админке.
-*/
 
 :root {
     --manitas-terracotta: #C07A5A;
@@ -14,128 +9,142 @@
     --manitas-sage: #8A9E8C;
 }
 
-/* ГЛОБАЛЬНЫЙ ФОН И ШРИФТЫ */
+/* 1. ГЛОБАЛЬНЫЕ НАСТРОЙКИ ШРИФТОВ И ФОНА */
 body, .wp-site-blocks {
     background-color: var(--manitas-cream) !important;
     font-family: 'Plus Jakarta Sans', sans-serif !important;
     color: var(--manitas-dark-text) !important;
+    margin: 0 !important;
+    padding: 0 !important;
 }
 
-/* ВСЕ ЗАГОЛОВКИ САЙТА */
-h1, h2, h3, h4, .wp-block-heading {
+/* 2. ШРИФТЫ И ЗАГОЛОВКИ */
+h1 {
+    font-family: 'Playfair Display', serif !important;
+    font-style: italic !important;
+    color: var(--manitas-terracotta) !important;
+    font-size: clamp(3rem, 8vw, 5.5rem) !important; /* Большой презентабельный заголовок */
+    line-height: 1.1 !important;
+    text-align: center;
+    margin: 40px 0 !important;
+    font-weight: 600 !important;
+}
+
+h2, h3, h4, .wp-block-heading {
     font-family: 'Playfair Display', serif !important;
     font-style: italic !important;
     color: var(--manitas-terracotta) !important;
 }
 
-/* ПЕРВАЯ КАРТИНКА НА ГЛАВНОЙ (Высота 700px) */
-/* Мы ищем первую фигуру с изображением внутри блоков сайта */
-.wp-site-blocks > .wp-block-image:first-child img,
-.wp-block-cover:first-child {
-    height: 700px !important;
+/* 3. НАВИГАЦИЯ (ВЕРХНИЙ ПРАВЫЙ УГОЛ) */
+header .wp-block-navigation {
+    justify-content: flex-end !important;
+    padding: 20px 5% !important;
+}
+
+header .wp-block-navigation-item__label {
+    font-size: 1.1rem !important;
+    transition: font-weight 0.2s ease !important;
+}
+
+header .wp-block-navigation-item:hover .wp-block-navigation-item__label {
+    font-weight: 700 !important;
+}
+
+/* 4. ПОЛНОЭКРАННЫЕ ИЗОБРАЖЕНИЯ (1-е и 2-е) */
+.wp-site-blocks > .wp-block-image:nth-of-type(1) img,
+.wp-site-blocks > .wp-block-image:nth-of-type(2) img,
+.wp-site-blocks > .wp-block-cover:nth-of-type(1),
+.wp-site-blocks > .wp-block-cover:nth-of-type(2) {
+    width: 100vw !important;
+    max-width: 100vw !important;
+    margin-left: calc(50% - 50vw) !important;
+    height: 90vh !important; /* Почти весь экран */
     object-fit: cover !important;
+    border-radius: 0 !important;
 }
 
-/* --- 1. ВИЗИТКИ (Одинаковый размер и шрифты) --- */
-.ma-banniere-carte {
-    max-width: 800px !important;
-    min-height: 400px !important; /* Одинаковая минимальная высота */
-    margin: 60px auto !important;
-    border-radius: 40px !important;
-    overflow: hidden !important;
-    box-shadow: 0 25px 50px rgba(0,0,0,0.1) !important;
-    background-color: var(--manitas-cream) !important;
-    display: flex !important;
-    flex-direction: column !important;
-    justify-content: center !important;
-    padding: 40px !important;
-    text-align: center !important;
-}
-
-.ma-banniere-carte h2 {
-    font-family: 'Playfair Display', serif !important;
-    font-style: italic !important;
-    color: var(--manitas-terracotta) !important;
-    font-size: 2.5rem !important;
-}
-
-.ma-banniere-carte p {
-    font-family: 'Plus Jakarta Sans', sans-serif !important;
-    color: var(--manitas-dark-text) !important;
-    font-size: 1.2rem !important;
-}
-
-/* --- 2. ЭСТЕТИЧНАЯ КАРУСЕЛЬ --- */
-.my-manitas-carousel {
+/* 5. ВИДЕО (ВЫСОТА 1200px) */
+.wp-block-video video, 
+.wp-block-embed-youtube iframe {
     width: 100% !important;
-    background-color: var(--manitas-cream);
-    padding: 60px 0 !important;
+    height: 1200px !important;
+    object-fit: cover !important;
+    border-radius: 20px;
 }
 
-.my-manitas-carousel .carousel-track {
+/* 6. КОМПАКТНЫЕ ВИЗИТКИ */
+.ma-banniere-carte {
+    max-width: 350px !important; /* Уменьшили ширину */
+    min-height: 250px !important; /* Уменьшили высоту */
+    margin: 20px !important;
+    display: inline-flex !important; /* Позволяет выстраиваться в ряд */
+    padding: 25px !important;
+    border-radius: 25px !important;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05) !important;
+    background: white !important;
+    vertical-align: top;
+}
+
+.ma-banniere-carte h2 { font-size: 1.8rem !important; }
+.ma-banniere-carte p { font-size: 1rem !important; }
+
+/* Контейнер для визиток, чтобы они были по центру */
+.visites-container {
+    text-align: center;
+    padding: 40px 0;
+}
+
+/* 7. КАРУСЕЛЬ ИЗ ГАЛЕРЕИ (Автоматическая трансформация) */
+.wp-block-gallery, .my-manitas-carousel {
     display: flex !important;
     overflow-x: auto !important;
     scroll-snap-type: x mandatory !important;
-    scrollbar-width: none;
-    gap: 30px;
-    padding: 0 20px;
+    gap: 20px !important;
+    padding: 40px 20px !important;
+    scrollbar-width: none !important;
 }
 
-.my-manitas-carousel .carousel-track::-webkit-scrollbar { display: none; }
+.wp-block-gallery::-webkit-scrollbar { display: none; }
 
-.my-carousel-card {
-    flex: 0 0 85% !important;
+.wp-block-gallery .wp-block-image, .my-carousel-card {
+    flex: 0 0 80% !important;
+    max-width: 80% !important;
     scroll-snap-align: center !important;
-    background: white !important;
+    position: relative;
     border-radius: 30px !important;
-    padding: 50px !important;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.05) !important;
-    text-align: center !important;
-    min-height: 450px !important;
-    display: flex !important;
-    flex-direction: column !important;
-    justify-content: center !important;
-    border: 1px solid rgba(192, 122, 90, 0.1);
+    overflow: hidden;
+    height: 500px !important;
 }
 
 @media (min-width: 850px) {
-    .my-carousel-card { flex: 0 0 600px !important; }
+    .wp-block-gallery .wp-block-image, .my-carousel-card { 
+        flex: 0 0 500px !important; 
+        max-width: 500px !important;
+    }
 }
 
-.my-carousel-card .slide-title {
-    color: var(--manitas-terracotta) !important;
-    font-family: 'Playfair Display', serif !important;
-    font-style: italic !important;
-    font-size: 2.8rem !important;
-    margin-bottom: 15px !important;
+/* Текст поверх карусели */
+.my-carousel-card {
+    background: white !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center;
+    padding: 40px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.08);
 }
 
-.my-carousel-card .slide-text {
-    color: var(--manitas-dark-text) !important;
-    font-family: 'Plus Jakarta Sans', sans-serif !important;
-    font-size: 1.1rem !important;
-    line-height: 1.6 !important;
-}
+.slide-title { font-size: 2.2rem !important; margin-bottom: 10px !important; }
+.slide-text { font-size: 1.1rem !important; opacity: 0.9; }
 
-.my-carousel-card .manitas-divider {
-    border: 0 !important;
-    border-top: 2px solid var(--manitas-terracotta) !important;
-    width: 50px !important;
-    margin: 25px auto !important;
-    opacity: 0.4;
-}
-
-/* Кнопки */
+/* 8. КНОПКИ */
 .wp-block-button__link {
     background-color: var(--manitas-terracotta) !important;
-    color: #FFFFFF !important;
     border-radius: 50px !important;
-    padding: 12px 30px !important;
-    font-family: 'Plus Jakarta Sans', sans-serif !important;
-    transition: all 0.3s ease !important;
-}
-
-.wp-block-button__link:hover {
-    background-color: var(--manitas-sage) !important;
-    transform: translateY(-2px);
+    padding: 15px 40px !important;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
 }
