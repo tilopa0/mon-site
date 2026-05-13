@@ -63,7 +63,7 @@ header .wp-block-navigation-item:hover .wp-block-navigation-item__label {
     width: 100% !important;
     max-width: 800px !important; /* Стандартный размер как у Notre concept */
     margin: 40px auto !important; /* Центрируем и добавляем отступы */
-    height: 500px !important;    /* Приятная высота для баннера */
+    height: 900px !important;    /* Увеличенная высота (в 2 раза выше текущей) */
     object-fit: cover !important;
     border-radius: 40px !important; /* Скругляем края для эстетики */
     display: block !important;
