@@ -1,5 +1,5 @@
 /* =========================================================================
-   MANITAS CERAMIC STUDIO - ULTIMATE MODERN LAYOUT
+   MANITAS CERAMIC STUDIO - FINAL PRODUCTION STYLES
    ========================================================================= */
 
 :root {
@@ -9,246 +9,144 @@
     --manitas-sage: #8A9E8C;
 }
 
-/* 1. ГЛОБАЛЬНЫЕ НАСТРОЙКИ ШРИФТОВ И ФОНА */
 body, .wp-site-blocks {
     background-color: var(--manitas-cream) !important;
     font-family: 'Plus Jakarta Sans', sans-serif !important;
     color: var(--manitas-dark-text) !important;
-    margin: 0 !important;
-    padding: 0 !important;
 }
 
-/* 2. ШРИФТЫ И ЗАГОЛОВКИ */
+/* --- ХЕДЕР (ЛОГО СЛЕВА, МЕНЮ СПРАВА) --- */
+.manitas-header {
+    background: var(--manitas-cream);
+    padding: 20px 0;
+    width: 100%;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.manitas-header .logo a {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-weight: 700;
+    font-size: 1.8rem;
+    color: var(--manitas-terracotta);
+    text-decoration: none;
+}
+
+.manitas-header .main-menu {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+    margin: 0;
+}
+
+.manitas-header .main-menu a {
+    text-decoration: none;
+    color: var(--manitas-dark-text);
+    font-weight: 400;
+    transition: font-weight 0.2s ease;
+}
+
+.manitas-header .main-menu a:hover {
+    font-weight: 700;
+}
+
+/* --- ИЕРАРХИЯ ЗАГОЛОВКОВ --- */
 h1 {
     font-family: 'Playfair Display', serif !important;
     font-style: italic !important;
     color: var(--manitas-terracotta) !important;
-    font-size: clamp(3rem, 8vw, 5.5rem) !important; /* Большой презентабельный заголовок */
-    line-height: 1.1 !important;
+    font-size: clamp(2.5rem, 6vw, 4.5rem) !important; /* XL презентабельный заголовок */
     text-align: center;
-    margin: 40px 0 !important;
-    font-weight: 600 !important;
 }
 
-h2, h3, h4, .wp-block-heading {
+/* Тексты "Comment ça marche?" и "Un moment suspendu..." (H2 - МЕНЬШЕ) */
+h2, .wp-block-heading {
     font-family: 'Playfair Display', serif !important;
     font-style: italic !important;
     color: var(--manitas-terracotta) !important;
+    font-size: clamp(1.8rem, 4vw, 2.5rem) !important; /* Заметно меньше чем H1 */
+    text-align: center;
 }
 
-/* 3. НАВИГАЦИЯ (ВЕРХНИЙ ПРАВЫЙ УГОЛ) */
-header .wp-block-navigation {
-    justify-content: flex-end !important;
-    padding: 20px 5% !important;
-}
-
-header .wp-block-navigation-item__label {
-    font-size: 1.1rem !important;
-    transition: font-weight 0.2s ease !important;
-}
-
-header .wp-block-navigation-item:hover .wp-block-navigation-item__label {
-    font-weight: 700 !important;
-}
-
-/* 4. ИЗОБРАЖЕНИЯ (Выравнивание под размер блока "Notre concept") */
-/* 
-   Мы убираем 100vw и отрицательные отступы, чтобы картинки вернулись в границы сайта.
-   Теперь они будут такой же ширины, как и блок "Notre concept en 5 étapes" (около 800-1000px).
-*/
-.wp-site-blocks > .wp-block-image:nth-of-type(1) img,
-.wp-site-blocks > .wp-block-image:nth-of-type(2) img,
-.wp-site-blocks > .wp-block-cover:nth-of-type(1),
-.wp-site-blocks > .wp-block-cover:nth-of-type(2) {
-    width: 100% !important;
-    max-width: 800px !important; /* Стандартный размер как у Notre concept */
-    margin: 40px auto !important; /* Центрируем и добавляем отступы */
-    height: 900px !important;    /* Увеличенная высота (в 2 раза выше текущей) */
-    object-fit: cover !important;
-    border-radius: 40px !important; /* Скругляем края для эстетики */
-    display: block !important;
-}
-
-
-/* 5. ВИДЕО (ВЫСОТА 1200px) */
-.wp-block-video video, 
-.wp-block-embed-youtube iframe {
-    width: 100% !important;
-    height: 1200px !important;
-    object-fit: cover !important;
-    border-radius: 20px;
-}
-
-/* 6. СЕТКА ВИЗИТОК (ПРЕЦИЗИОННЫЕ РАЗМЕРЫ 8x4 см) */
-/* 
-   Мы используем сантиметры (cm) для точного соответствия твоему запросу.
-   Контейнер выровнен по центру (margin: auto).
-*/
+/* --- ВИЗИТКИ (ПРЕЦИЗИОННЫЕ 8x4 см + ТВОЯ МАГИЯ) --- */
 .visites-container {
     display: flex !important;
     flex-wrap: wrap !important;
     justify-content: center !important;
     gap: 20px !important;
-    max-width: 1400px !important;
     margin: 60px auto !important;
-    padding: 0 20px !important;
 }
 
 .ma-banniere-carte {
-    width: 8cm !important; /* Ширина ровно 8 см */
-    height: 4cm !important; /* Высота ровно 4 см */
-    margin: 10px !important;
-    padding: 15px !important;
-    border-radius: 15px !important;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.06) !important;
-    background: white !important;
-    display: flex !important;
-    flex-direction: column !important;
-    justify-content: center !important;
-    text-align: center !important;
+    width: 8cm !important;
+    height: 4cm !important;
+    border-radius: 40px !important;
     overflow: hidden !important;
-    border: 1px solid rgba(192, 122, 90, 0.15);
-}
-
-/* Первый H2 (Цифры 01, 02...) */
-.ma-banniere-carte h2:first-of-type {
-    font-size: 1.2rem !important;
-    color: var(--manitas-sage) !important;
-    margin-bottom: 5px !important;
-    font-family: 'Plus Jakarta Sans', sans-serif !important; /* Цифры лучше смотрятся обычным шрифтом */
-    font-weight: 700 !important;
-    font-style: normal !important;
-}
-
-/* Второй H2 (Заголовок этапа) */
-.ma-banniere-carte h2:nth-of-type(2) {
-    font-size: 1.4rem !important;
-    color: var(--manitas-terracotta) !important;
-    margin-bottom: 8px !important;
-    font-family: 'Playfair Display', serif !important;
-    font-style: italic !important;
-}
-
-/* Параграф (Обычный читабельный текст) */
-.ma-banniere-carte p {
-    font-family: 'Plus Jakarta Sans', sans-serif !important;
-    font-size: 0.9rem !important;
-    color: var(--manitas-dark-text) !important;
-    line-height: 1.3 !important;
-    margin: 0 !important;
-    font-style: normal !important;
-}
-
-/* АДАПТИВНОСТЬ ДЛЯ МОБИЛЬНЫХ */
-@media (max-width: 768px) {
-    .ma-banniere-carte {
-        width: 90% !important; /* На мобильных переходим на % для удобства */
-        height: auto !important; /* Высота подстраивается под текст */
-        min-height: 150px !important;
-    }
-}
-
-
-
-
-
-
-/* 7. КАРУСЕЛЬ ИЗ ГАЛЕРЕИ (Автоматическая трансформация) */
-.wp-block-gallery, .my-manitas-carousel {
+    box-shadow: 0 25px 50px rgba(0,0,0,0.1) !important;
+    background-color: var(--manitas-cream) !important;
     display: flex !important;
-    overflow-x: auto !important;
-    scroll-snap-type: x mandatory !important;
-    gap: 20px !important;
-    padding: 40px 20px !important;
-    scrollbar-width: none !important;
+    align-items: center !important; 
+    justify-content: center !important;
+    margin: 10px !important;
 }
 
-.wp-block-gallery::-webkit-scrollbar { display: none; }
-
-.wp-block-gallery .wp-block-image, .my-carousel-card {
-    flex: 0 0 80% !important;
-    max-width: 80% !important;
-    scroll-snap-align: center !important;
-    position: relative;
-    border-radius: 30px !important;
-    overflow: hidden;
-    height: 500px !important;
-}
-
-@media (min-width: 850px) {
-    .wp-block-gallery .wp-block-image, .my-carousel-card { 
-        flex: 0 0 500px !important; 
-        max-width: 500px !important;
-    }
-}
-
-/* Текст поверх карусели */
-.my-carousel-card {
-    background: white !important;
+/* Твоя магия внутреннего контейнера */
+.ma-banniere-carte .wp-block-cover__inner-container,
+.ma-banniere-carte .wp-block-group__inner-container {
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
     justify-content: center !important;
-    text-align: center;
-    padding: 40px;
-    box-shadow: 0 15px 40px rgba(0,0,0,0.08);
-}
-
-.slide-title { font-size: 2.2rem !important; margin-bottom: 10px !important; }
-.slide-text { font-size: 1.1rem !important; opacity: 0.9; }
-
-/* 10. ТЕКСТ "Notre concept" (ГАРАНТИРОВАННЫЙ РАЗМЕР XL) */
-/* 
-   Мы нацеливаемся на все возможные заголовки, чтобы точно поймать нужный текст.
-   clamp(3rem, 8vw, 5rem) — это "умный" размер:
-   3rem - минимум (для мобилок)
-   8vw - растет вместе с шириной экрана
-   5rem - максимум (для больших мониторов)
-*/
-h1, h2, h3, .wp-block-heading, .wp-block-post-title {
-    word-wrap: break-word;
-}
-
-/* Специальное правило для блока концепции */
-.wp-site-blocks h2:contains("concept"), 
-.wp-site-blocks .wp-block-heading {
-    font-size: clamp(2.8rem, 7vw, 4.8rem) !important;
-    line-height: 1.1 !important;
-    margin-bottom: 30px !important;
     text-align: center !important;
+    width: 100% !important;
+    padding: 10px !important;
 }
 
-
-/* 
-   Эти стили применяются к изображениям, которые идут после секции бронирования.
-   Мы растягиваем их на 100vw и убираем все отступы (margin: 0), чтобы они шли впритык.
-*/
-.wp-site-blocks .wp-block-image.is-style-rounded {
-    border-radius: 0 !important; /* Убираем скругление для бесшовности */
+.ma-banniere-carte h2 {
+    font-size: 1.2rem !important;
+    margin: 0 !important;
+    color: var(--manitas-terracotta) !important;
 }
 
-/* Нацеливаемся на изображения, которые должны быть баннерами-разделителями */
-.wp-site-blocks > .wp-block-image,
-.wp-site-blocks > figure.wp-block-image {
-    margin-top: 0 !important;
-    margin-bottom: 0 !important;
-    padding: 0 !important;
+.ma-banniere-carte p {
+    font-size: 0.85rem !important;
+    font-family: 'Plus Jakarta Sans', sans-serif !important;
+    line-height: 1.3 !important;
+    margin-top: 5px !important;
+    color: var(--manitas-dark-text) !important;
 }
 
+/* --- ИЗОБРАЖЕНИЯ И ВИДЕО --- */
 .wp-site-blocks > .wp-block-image img,
-.wp-site-blocks > figure.wp-block-image img {
-    width: 100vw !important;
-    max-width: 100vw !important;
-    margin-left: calc(50% - 50vw) !important;
-    height: 200px !important; /* Примерно 2.5 см на средних экранах */
-    object-fit: cover !important;
-    display: block !important;
-    border-radius: 0 !important;
-}
-
-/* Исключаем первые два больших баннера от этого правила, так как они 900px */
-.wp-site-blocks > .wp-block-image:nth-of-type(1) img,
-.wp-site-blocks > .wp-block-image:nth-of-type(2) img {
+.wp-site-blocks > .wp-block-cover {
+    max-width: 800px !important;
+    margin: 40px auto !important;
     height: 900px !important;
+    object-fit: cover !important;
+    border-radius: 40px;
 }
 
+.wp-block-video video {
+    height: 1200px !important;
+    object-fit: cover !important;
+    border-radius: 20px;
+}
+
+/* --- КАРУСЕЛЬ (Гармоничная) --- */
+.wp-block-gallery, .carousel-track {
+    display: flex !important;
+    overflow-x: auto !important;
+    scroll-snap-type: x mandatory !important;
+    gap: 20px !important;
+    scrollbar-width: none;
+}
+.wp-block-gallery::-webkit-scrollbar { display: none; }
