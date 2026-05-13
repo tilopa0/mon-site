@@ -194,7 +194,20 @@ header .wp-block-navigation-item:hover .wp-block-navigation-item__label {
 .slide-title { font-size: 2.2rem !important; margin-bottom: 10px !important; }
 .slide-text { font-size: 1.1rem !important; opacity: 0.9; }
 
-/* 9. БЕСШОВНЫЕ ПОЛНОШИРИННЫЕ БАННЕРЫ */
+/* 10. ТЕКСТ НА ТРЕТЬЕЙ КАРТИНКЕ (РАЗМЕР XL) */
+/* 
+   Используем :nth-of-type(3), чтобы найти именно третий блок на странице.
+   clamp позволяет тексту быть гибким: минимум 2.5rem, максимум 4rem.
+*/
+.wp-site-blocks > *:nth-of-type(3) h1,
+.wp-site-blocks > *:nth-of-type(3) h2,
+.wp-site-blocks > *:nth-of-type(3) .wp-block-heading {
+    font-size: clamp(2.5rem, 6vw, 4rem) !important; 
+    text-align: center !important;
+    margin-top: 20px !important;
+    line-height: 1.2 !important;
+}
+
 /* 
    Эти стили применяются к изображениям, которые идут после секции бронирования.
    Мы растягиваем их на 100vw и убираем все отступы (margin: 0), чтобы они шли впритык.
