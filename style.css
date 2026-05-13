@@ -141,12 +141,58 @@ h2, .wp-block-heading {
     border-radius: 20px;
 }
 
-/* --- КАРУСЕЛЬ (Гармоничная) --- */
-.wp-block-gallery, .carousel-track {
-    display: flex !important;
-    overflow-x: auto !important;
-    scroll-snap-type: x mandatory !important;
-    gap: 20px !important;
-    scrollbar-width: none;
+/* --- ШАЛФЕЕВЫЙ ФУТЕР С СОЦСЕТЯМИ --- */
+.manitas-footer-banner {
+    background-color: var(--manitas-sage) !important;
+    padding: 60px 0 40px 0;
+    color: white !important;
+    text-align: center;
+    width: 100%;
+    margin-top: 60px;
 }
-.wp-block-gallery::-webkit-scrollbar { display: none; }
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin-bottom: 30px;
+}
+
+.social-icons svg {
+    width: 32px;
+    height: 32px;
+    fill: white; /* Иконки будут белыми */
+    transition: transform 0.3s ease;
+}
+
+.social-icons a:hover svg {
+    transform: scale(1.2);
+}
+
+.footer-links {
+    margin-bottom: 20px;
+}
+
+.footer-links a {
+    color: white !important;
+    text-decoration: none;
+    font-size: 0.9rem;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+
+.footer-links a:hover {
+    opacity: 1;
+    text-decoration: underline;
+}
+
+.copyright {
+    font-size: 0.8rem;
+    opacity: 0.6;
+}
