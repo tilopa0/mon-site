@@ -79,72 +79,75 @@ header .wp-block-navigation-item:hover .wp-block-navigation-item__label {
     border-radius: 20px;
 }
 
-/* 6. СЕТКА ВИЗИТОК (СТРОГО 5 КВАДРАТОВ В РЯД) */
+/* 6. СЕТКА ВИЗИТОК (ПРЕЦИЗИОННЫЕ РАЗМЕРЫ 8x4 см) */
 /* 
-   Используем grid-template-columns: repeat(5, 1fr) !important, 
-   чтобы принудительно разделить экран на 5 равных частей.
+   Мы используем сантиметры (cm) для точного соответствия твоему запросу.
+   Контейнер выровнен по центру (margin: auto).
 */
 .visites-container {
-    display: grid !important;
-    grid-template-columns: repeat(5, 1fr) !important; 
-    gap: 15px !important;
-    max-width: 1200px !important;
-    margin: 50px auto !important;
-    padding: 0 10px !important;
-    width: 100% !important;
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    gap: 20px !important;
+    max-width: 1400px !important;
+    margin: 60px auto !important;
+    padding: 0 20px !important;
 }
 
-/* 
-   Делаем карточки "квадратами":
-   width: 100% здесь означает 100% от одной пятой части экрана.
-   aspect-ratio: 1/1 заставляет высоту быть равной ширине.
-*/
 .ma-banniere-carte {
-    width: 100% !important; 
-    max-width: 220px !important; /* Жесткое ограничение ширины */
-    aspect-ratio: 1 / 1 !important; /* Делаем их квадратными */
-    margin: 0 auto !important;
+    width: 8cm !important; /* Ширина ровно 8 см */
+    height: 4cm !important; /* Высота ровно 4 см */
+    margin: 10px !important;
     padding: 15px !important;
-    border-radius: 20px !important;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.05) !important;
+    border-radius: 15px !important;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.06) !important;
     background: white !important;
     display: flex !important;
     flex-direction: column !important;
     justify-content: center !important;
     text-align: center !important;
-    box-sizing: border-box !important;
+    overflow: hidden !important;
+    border: 1px solid rgba(192, 122, 90, 0.15);
 }
 
-.ma-banniere-carte h2 { 
-    font-size: clamp(1rem, 1.5vw, 1.3rem) !important; /* Адаптивный размер шрифта */
-    line-height: 1.1 !important; 
-    margin-bottom: 8px !important; 
+/* Первый H2 (Цифры 01, 02...) */
+.ma-banniere-carte h2:first-of-type {
+    font-size: 1.2rem !important;
+    color: var(--manitas-sage) !important;
+    margin-bottom: 5px !important;
+    font-family: 'Plus Jakarta Sans', sans-serif !important; /* Цифры лучше смотрятся обычным шрифтом */
+    font-weight: 700 !important;
+    font-style: normal !important;
 }
 
-.ma-banniere-carte p { 
-    font-size: clamp(0.7rem, 1vw, 0.9rem) !important; 
-    line-height: 1.3 !important; 
+/* Второй H2 (Заголовок этапа) */
+.ma-banniere-carte h2:nth-of-type(2) {
+    font-size: 1.4rem !important;
+    color: var(--manitas-terracotta) !important;
+    margin-bottom: 8px !important;
+    font-family: 'Playfair Display', serif !important;
+    font-style: italic !important;
 }
 
-/* АДАПТИВНОСТЬ: Планшеты (3 в ряд) */
-@media (max-width: 1024px) {
-    .visites-container {
-        grid-template-columns: repeat(3, 1fr) !important;
-    }
+/* Параграф (Обычный читабельный текст) */
+.ma-banniere-carte p {
+    font-family: 'Plus Jakarta Sans', sans-serif !important;
+    font-size: 0.9rem !important;
+    color: var(--manitas-dark-text) !important;
+    line-height: 1.3 !important;
+    margin: 0 !important;
+    font-style: normal !important;
 }
 
-/* АДАПТИВНОСТЬ: Мобильные (1 в ряд / по вертикали) */
-@media (max-width: 767px) {
-    .visites-container {
-        grid-template-columns: 1fr !important;
-        max-width: 300px !important;
-    }
-    
+/* АДАПТИВНОСТЬ ДЛЯ МОБИЛЬНЫХ */
+@media (max-width: 768px) {
     .ma-banniere-carte {
-        aspect-ratio: auto !important; /* На мобилках пусть высота подстраивается под текст */
-        min-height: 200px !important;
+        width: 90% !important; /* На мобильных переходим на % для удобства */
+        height: auto !important; /* Высота подстраивается под текст */
+        min-height: 150px !important;
     }
 }
+
 
 
 
