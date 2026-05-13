@@ -79,27 +79,65 @@ header .wp-block-navigation-item:hover .wp-block-navigation-item__label {
     border-radius: 20px;
 }
 
-/* 6. КОМПАКТНЫЕ ВИЗИТКИ */
-.ma-banniere-carte {
-    max-width: 350px !important; /* Уменьшили ширину */
-    min-height: 250px !important; /* Уменьшили высоту */
-    margin: 20px !important;
-    display: inline-flex !important; /* Позволяет выстраиваться в ряд */
-    padding: 25px !important;
-    border-radius: 25px !important;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.05) !important;
-    background: white !important;
-    vertical-align: top;
-}
-
-.ma-banniere-carte h2 { font-size: 1.8rem !important; }
-.ma-banniere-carte p { font-size: 1rem !important; }
-
-/* Контейнер для визиток, чтобы они были по центру */
+/* 6. КОМПАКТНЫЕ ВИЗИТКИ (5 В РЯД) */
+/* 
+   Контейнер использует Flexbox. 
+   flex-wrap: nowrap заставляет карточки стоять в одну линию.
+   gap: 15px задает расстояние между ними.
+*/
 .visites-container {
-    text-align: center;
-    padding: 40px 0;
+    display: flex !important;
+    flex-direction: row !important; /* В ряд по умолчанию */
+    flex-wrap: nowrap !important;
+    justify-content: center !important;
+    align-items: stretch !important;
+    gap: 15px !important;
+    padding: 40px 2% !important;
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+    overflow-x: auto !important; /* На планшетах можно будет скроллить вбок */
 }
+
+.ma-banniere-carte {
+    flex: 1 1 200px !important; /* Карточки будут сжиматься/растягиваться, база 200px */
+    max-width: 220px !important; /* Ограничиваем, чтобы влезло 5 штук */
+    min-height: 300px !important;
+    margin: 0 !important; /* Убираем внешние отступы, так как есть gap */
+    padding: 20px !important;
+    border-radius: 20px !important;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.05) !important;
+    background: white !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    text-align: center !important;
+}
+
+.ma-banniere-carte h2 { 
+    font-size: 1.4rem !important; 
+    margin-bottom: 10px !important;
+}
+
+.ma-banniere-carte p { 
+    font-size: 0.95rem !important; 
+    line-height: 1.4 !important;
+}
+
+/* МОБИЛЬНАЯ ВЕРСИЯ (Один под одним) */
+@media (max-width: 768px) {
+    .visites-container {
+        flex-direction: column !important; /* Переключаем в столбец */
+        align-items: center !important;
+    }
+    
+    .ma-banniere-carte {
+        max-width: 90% !important; /* На мобилках почти на всю ширину */
+        width: 90% !important;
+        min-height: auto !important;
+        flex: none !important;
+    }
+}
+
 
 /* 7. КАРУСЕЛЬ ИЗ ГАЛЕРЕИ (Автоматическая трансформация) */
 .wp-block-gallery, .my-manitas-carousel {
