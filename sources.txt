@@ -1,0 +1,14 @@
+/* 
+   Источники контента для сайта Manitas:
+   
+   1. Шрифты: Google Fonts (Playfair Display, Plus Jakarta Sans) 
+      - https://fonts.google.com/specimen/Playfair+Display
+      - https://fonts.google.com/specimen/Plus+Jakarta+Sans
+   
+   2. Иконки: Simple Icons / FontAwesome (в формате SVG)
+      - Instagram: https://simpleicons.org/?q=Instagram
+      - Facebook: https://simpleicons.org/?q=Facebook
+      - TikTok: https://simpleicons.org/?q=TikTok
+   
+   3. Вдохновение по палитре: Brand Guidelines Manitas (предоставлено клиентом)
+*/

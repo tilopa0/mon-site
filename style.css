@@ -1,0 +1,74 @@
+/*
+Theme Name: Manitas Child Theme
+Template: twentytwentyfive
+*/
+
+/* 
+   ПРИМЕЧАНИЕ: Шрифты теперь подключаются через functions.php.
+   Это правильный способ для WordPress, который гарантирует их работу 
+   и в админке, и на самом сайте (включая предпросмотр).
+*/
+
+/* 
+   1. ЦВЕТОВАЯ ПАЛИТРА (ПЕРЕМЕННЫЕ) 
+*/
+:root {
+    --manitas-terracotta: #C07A5A; /* Основной акцент */
+    --manitas-cream: #F5EFE6;      /* Фон */
+    --manitas-dark-gray: #4A4A4A;  /* Цвет текста */
+    --manitas-sage: #8A9E8C;       /* Дополнительный акцент */
+}
+
+
+/* 
+   3. ОСНОВНОЙ ТЕКСТ 
+   Селектор body применяет стили ко всей странице.
+*/
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif !important;
+    background-color: var(--manitas-cream) !important;
+    color: var(--manitas-dark-gray) !important;
+    line-height: 1.6;
+}
+
+/* 
+   4. ЗАГОЛОВКИ 
+   h1-h6 — это уровни заголовков. Мы делаем их курсивными и цвета терракоты.
+*/
+h1, h2, h3, h4, h5, h6, .wp-block-heading {
+    font-family: 'Playfair Display', serif !important;
+    color: var(--manitas-terracotta) !important;
+    font-weight: 600 !important;
+    font-style: italic !important;
+}
+
+/* 
+   5. ПАНЕЛЬ СОЦИАЛЬНЫХ СЕТЕЙ (СТИЛИ) 
+   Здесь мы описываем, как будет выглядеть наша будущая панель.
+*/
+.manitas-social-bar {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+    background-color: var(--manitas-sage);
+    border-radius: 8px;
+    margin: 20px 0;
+}
+
+.manitas-social-bar a {
+    color: white;
+    transition: transform 0.3s ease;
+    display: flex;
+    align-items: center;
+}
+
+.manitas-social-bar a:hover {
+    transform: scale(1.2); /* Эффект увеличения при наведении */
+}
+
+.manitas-social-icon {
+    width: 30px;
+    height: 30px;
+    fill: currentColor; /* Иконка принимает цвет текста ссылки (white) */
+}
