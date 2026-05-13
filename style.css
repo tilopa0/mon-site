@@ -197,19 +197,27 @@ header .wp-block-navigation-item:hover .wp-block-navigation-item__label {
 .slide-title { font-size: 2.2rem !important; margin-bottom: 10px !important; }
 .slide-text { font-size: 1.1rem !important; opacity: 0.9; }
 
-/* 10. ТЕКСТ НА ТРЕТЬЕЙ КАРТИНКЕ (РАЗМЕР XL) */
+/* 10. ТЕКСТ "Notre concept" (ГАРАНТИРОВАННЫЙ РАЗМЕР XL) */
 /* 
-   Используем :nth-of-type(3), чтобы найти именно третий блок на странице.
-   clamp позволяет тексту быть гибким: минимум 2.5rem, максимум 4rem.
+   Мы нацеливаемся на все возможные заголовки, чтобы точно поймать нужный текст.
+   clamp(3rem, 8vw, 5rem) — это "умный" размер:
+   3rem - минимум (для мобилок)
+   8vw - растет вместе с шириной экрана
+   5rem - максимум (для больших мониторов)
 */
-.wp-site-blocks > *:nth-of-type(3) h1,
-.wp-site-blocks > *:nth-of-type(3) h2,
-.wp-site-blocks > *:nth-of-type(3) .wp-block-heading {
-    font-size: clamp(2.5rem, 6vw, 4rem) !important; 
-    text-align: center !important;
-    margin-top: 20px !important;
-    line-height: 1.2 !important;
+h1, h2, h3, .wp-block-heading, .wp-block-post-title {
+    word-wrap: break-word;
 }
+
+/* Специальное правило для блока концепции */
+.wp-site-blocks h2:contains("concept"), 
+.wp-site-blocks .wp-block-heading {
+    font-size: clamp(2.8rem, 7vw, 4.8rem) !important;
+    line-height: 1.1 !important;
+    margin-bottom: 30px !important;
+    text-align: center !important;
+}
+
 
 /* 
    Эти стили применяются к изображениям, которые идут после секции бронирования.
