@@ -79,27 +79,28 @@ header .wp-block-navigation-item:hover .wp-block-navigation-item__label {
     border-radius: 20px;
 }
 
-/* 6. СЕТКА ВИЗИТОК (5 В РЯД - ГРИДЫ) */
+/* 6. СЕТКА ВИЗИТОК (СТРОГО 5 В РЯД) */
 /* 
-   Мы используем CSS Grid — это самый надежный способ сделать "5 в ряд".
-   grid-template-columns: repeat(5, 1fr) говорит браузеру: 
-   "сделай 5 колонок одинакового размера".
+   Контейнер создает сетку из 5 равных колонок (1fr каждая).
+   max-width: 1200px не дает всему ряду растягиваться на бесконечную ширину экрана.
 */
 .visites-container {
     display: grid !important;
-    grid-template-columns: repeat(5, 1fr) !important; /* Ровно 5 в ряд */
-    gap: 20px !important; /* Расстояние между карточками */
-    max-width: 1300px !important;
-    margin: 40px auto !important;
-    padding: 0 20px !important;
+    grid-template-columns: repeat(5, 1fr) !important; 
+    gap: 15px !important;
+    max-width: 1200px !important;
+    margin: 60px auto !important; /* Центрируем весь блок на странице */
+    padding: 0 15px !important;
 }
 
+/* 
+   Каждая карточка теперь занимает только 1/5 часть контейнера.
+*/
 .ma-banniere-carte {
-    width: 100% !important; /* Карточка занимает всю ширину своей колонки */
-    max-width: none !important; /* Убираем ограничения, которые "сбивали" ряд */
-    min-height: 350px !important;
+    width: auto !important; /* Убираем 100%, чтобы не раздувало */
+    min-height: 320px !important;
     margin: 0 !important;
-    padding: 25px !important;
+    padding: 20px !important;
     border-radius: 25px !important;
     box-shadow: 0 10px 30px rgba(0,0,0,0.05) !important;
     background: white !important;
@@ -107,29 +108,32 @@ header .wp-block-navigation-item:hover .wp-block-navigation-item__label {
     flex-direction: column !important;
     justify-content: center !important;
     text-align: center !important;
+    border: 1px solid rgba(192, 122, 90, 0.1);
 }
 
-.ma-banniere-carte h2 { font-size: 1.5rem !important; margin-bottom: 15px !important; }
-.ma-banniere-carte p { font-size: 1rem !important; line-height: 1.5 !important; }
+.ma-banniere-carte h2 { font-size: 1.3rem !important; line-height: 1.2 !important; margin-bottom: 10px !important; }
+.ma-banniere-carte p { font-size: 0.9rem !important; line-height: 1.4 !important; }
 
 /* АДАПТИВНОСТЬ: Планшеты (3 в ряд) */
-@media (max-width: 1100px) {
+@media (max-width: 1024px) {
     .visites-container {
         grid-template-columns: repeat(3, 1fr) !important;
     }
 }
 
-/* АДАПТИВНОСТЬ: Мобильные (1 под одной / по вертикали) */
-@media (max-width: 768px) {
+/* АДАПТИВНОСТЬ: Мобильные (1 в ряд / по вертикали) */
+@media (max-width: 767px) {
     .visites-container {
-        grid-template-columns: 1fr !important; /* Одна колонка */
+        grid-template-columns: 1fr !important; /* Карточки встают друг под друга */
+        max-width: 400px !important; /* Чтобы на мобилках они не были слишком широкими */
     }
     
     .ma-banniere-carte {
         min-height: auto !important;
-        padding: 30px !important;
+        padding: 30px 20px !important;
     }
 }
+
 
 
 
