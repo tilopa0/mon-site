@@ -181,12 +181,37 @@ header .wp-block-navigation-item:hover .wp-block-navigation-item__label {
 .slide-title { font-size: 2.2rem !important; margin-bottom: 10px !important; }
 .slide-text { font-size: 1.1rem !important; opacity: 0.9; }
 
-/* 8. КНОПКИ */
-.wp-block-button__link {
-    background-color: var(--manitas-terracotta) !important;
-    border-radius: 50px !important;
-    padding: 15px 40px !important;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    font-weight: 600;
+/* 9. БЕСШОВНЫЕ ПОЛНОШИРИННЫЕ БАННЕРЫ */
+/* 
+   Эти стили применяются к изображениям, которые идут после секции бронирования.
+   Мы растягиваем их на 100vw и убираем все отступы (margin: 0), чтобы они шли впритык.
+*/
+.wp-site-blocks .wp-block-image.is-style-rounded {
+    border-radius: 0 !important; /* Убираем скругление для бесшовности */
 }
+
+/* Нацеливаемся на изображения, которые должны быть баннерами-разделителями */
+.wp-site-blocks > .wp-block-image,
+.wp-site-blocks > figure.wp-block-image {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    padding: 0 !important;
+}
+
+.wp-site-blocks > .wp-block-image img,
+.wp-site-blocks > figure.wp-block-image img {
+    width: 100vw !important;
+    max-width: 100vw !important;
+    margin-left: calc(50% - 50vw) !important;
+    height: 200px !important; /* Примерно 2.5 см на средних экранах */
+    object-fit: cover !important;
+    display: block !important;
+    border-radius: 0 !important;
+}
+
+/* Исключаем первые два больших баннера от этого правила, так как они 900px */
+.wp-site-blocks > .wp-block-image:nth-of-type(1) img,
+.wp-site-blocks > .wp-block-image:nth-of-type(2) img {
+    height: 900px !important;
+}
+
