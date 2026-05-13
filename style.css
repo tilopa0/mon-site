@@ -51,18 +51,24 @@ header .wp-block-navigation-item:hover .wp-block-navigation-item__label {
     font-weight: 700 !important;
 }
 
-/* 4. ПОЛНОЭКРАННЫЕ ИЗОБРАЖЕНИЯ (1-е и 2-е) */
+/* 4. ИЗОБРАЖЕНИЯ (Выравнивание под размер блока "Notre concept") */
+/* 
+   Мы убираем 100vw и отрицательные отступы, чтобы картинки вернулись в границы сайта.
+   Теперь они будут такой же ширины, как и блок "Notre concept en 5 étapes" (около 800-1000px).
+*/
 .wp-site-blocks > .wp-block-image:nth-of-type(1) img,
 .wp-site-blocks > .wp-block-image:nth-of-type(2) img,
 .wp-site-blocks > .wp-block-cover:nth-of-type(1),
 .wp-site-blocks > .wp-block-cover:nth-of-type(2) {
-    width: 100vw !important;
-    max-width: 100vw !important;
-    margin-left: calc(50% - 50vw) !important;
-    height: 90vh !important; /* Почти весь экран */
+    width: 100% !important;
+    max-width: 800px !important; /* Стандартный размер как у Notre concept */
+    margin: 40px auto !important; /* Центрируем и добавляем отступы */
+    height: 500px !important;    /* Приятная высота для баннера */
     object-fit: cover !important;
-    border-radius: 0 !important;
+    border-radius: 40px !important; /* Скругляем края для эстетики */
+    display: block !important;
 }
+
 
 /* 5. ВИДЕО (ВЫСОТА 1200px) */
 .wp-block-video video, 
