@@ -79,33 +79,29 @@ header .wp-block-navigation-item:hover .wp-block-navigation-item__label {
     border-radius: 20px;
 }
 
-/* 6. КОМПАКТНЫЕ ВИЗИТКИ (5 В РЯД) */
+/* 6. СЕТКА ВИЗИТОК (5 В РЯД - ГРИДЫ) */
 /* 
-   Контейнер использует Flexbox. 
-   flex-wrap: nowrap заставляет карточки стоять в одну линию.
-   gap: 15px задает расстояние между ними.
+   Мы используем CSS Grid — это самый надежный способ сделать "5 в ряд".
+   grid-template-columns: repeat(5, 1fr) говорит браузеру: 
+   "сделай 5 колонок одинакового размера".
 */
 .visites-container {
-    display: flex !important;
-    flex-direction: row !important; /* В ряд по умолчанию */
-    flex-wrap: nowrap !important;
-    justify-content: center !important;
-    align-items: stretch !important;
-    gap: 15px !important;
-    padding: 40px 2% !important;
-    max-width: 1200px !important;
-    margin: 0 auto !important;
-    overflow-x: auto !important; /* На планшетах можно будет скроллить вбок */
+    display: grid !important;
+    grid-template-columns: repeat(5, 1fr) !important; /* Ровно 5 в ряд */
+    gap: 20px !important; /* Расстояние между карточками */
+    max-width: 1300px !important;
+    margin: 40px auto !important;
+    padding: 0 20px !important;
 }
 
 .ma-banniere-carte {
-    flex: 1 1 200px !important; /* Карточки будут сжиматься/растягиваться, база 200px */
-    max-width: 220px !important; /* Ограничиваем, чтобы влезло 5 штук */
-    min-height: 300px !important;
-    margin: 0 !important; /* Убираем внешние отступы, так как есть gap */
-    padding: 20px !important;
-    border-radius: 20px !important;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.05) !important;
+    width: 100% !important; /* Карточка занимает всю ширину своей колонки */
+    max-width: none !important; /* Убираем ограничения, которые "сбивали" ряд */
+    min-height: 350px !important;
+    margin: 0 !important;
+    padding: 25px !important;
+    border-radius: 25px !important;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05) !important;
     background: white !important;
     display: flex !important;
     flex-direction: column !important;
@@ -113,30 +109,28 @@ header .wp-block-navigation-item:hover .wp-block-navigation-item__label {
     text-align: center !important;
 }
 
-.ma-banniere-carte h2 { 
-    font-size: 1.4rem !important; 
-    margin-bottom: 10px !important;
+.ma-banniere-carte h2 { font-size: 1.5rem !important; margin-bottom: 15px !important; }
+.ma-banniere-carte p { font-size: 1rem !important; line-height: 1.5 !important; }
+
+/* АДАПТИВНОСТЬ: Планшеты (3 в ряд) */
+@media (max-width: 1100px) {
+    .visites-container {
+        grid-template-columns: repeat(3, 1fr) !important;
+    }
 }
 
-.ma-banniere-carte p { 
-    font-size: 0.95rem !important; 
-    line-height: 1.4 !important;
-}
-
-/* МОБИЛЬНАЯ ВЕРСИЯ (Один под одним) */
+/* АДАПТИВНОСТЬ: Мобильные (1 под одной / по вертикали) */
 @media (max-width: 768px) {
     .visites-container {
-        flex-direction: column !important; /* Переключаем в столбец */
-        align-items: center !important;
+        grid-template-columns: 1fr !important; /* Одна колонка */
     }
     
     .ma-banniere-carte {
-        max-width: 90% !important; /* На мобилках почти на всю ширину */
-        width: 90% !important;
         min-height: auto !important;
-        flex: none !important;
+        padding: 30px !important;
     }
 }
+
 
 
 /* 7. КАРУСЕЛЬ ИЗ ГАЛЕРЕИ (Автоматическая трансформация) */
