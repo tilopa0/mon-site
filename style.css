@@ -42,6 +42,12 @@ body, .wp-site-blocks {
     }
 }
 
+/* --- АКЦЕНТИРОВАНИЕ ТЕКСТА --- */
+/* Используй этот класс, чтобы сделать текст жирным (например, для концепции) */
+.manitas-highlight {
+    font-weight: 700 !important;
+}
+
 /* --- ХЕДЕР (ЛОГО СЛЕВА, МЕНЮ СПРАВА) --- */
 .manitas-header {
     background: var(--manitas-cream);
