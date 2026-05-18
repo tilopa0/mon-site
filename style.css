@@ -224,6 +224,43 @@ h2.manitas-slogan,
     margin: 0 !important;
 }
 
+/* --- КАРУСЕЛЬ ИЗОБРАЖЕНИЙ --- */
+/* Применяется к блоку Галерея (Галерея -> Дополнительно -> Класс: manitas-carousel) */
+.manitas-carousel {
+    display: flex !important;
+    overflow-x: auto !important;
+    scroll-snap-type: x mandatory !important;
+    scroll-behavior: smooth !important;
+    gap: 20px !important;
+    padding: 20px 0 !important;
+    scrollbar-width: none; /* Скрываем полосу прокрутки в Firefox */
+}
+
+.manitas-carousel::-webkit-scrollbar {
+    display: none; /* Скрываем полосу прокрутки в Chrome/Safari */
+}
+
+.manitas-carousel .wp-block-image,
+.manitas-carousel figure {
+    flex: 0 0 80% !important; /* Каждая картинка занимает 80% ширины */
+    scroll-snap-align: center !important;
+    margin: 0 !important;
+}
+
+.manitas-carousel img {
+    width: 100% !important;
+    height: 500px !important; /* Фиксированная высота для карусели */
+    object-fit: cover !important;
+    border-radius: 40px !important;
+}
+
+/* На больших экранах делаем картинки чуть меньше, чтобы было видно края соседних */
+@media (min-width: 1024px) {
+    .manitas-carousel .wp-block-image {
+        flex: 0 0 60% !important;
+    }
+}
+
 /* --- ИЗОБРАЖЕНИЯ И ВИДЕО --- */
 .wp-site-blocks > .wp-block-image img,
 .wp-site-blocks > .wp-block-cover {
