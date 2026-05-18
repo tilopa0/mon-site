@@ -48,10 +48,13 @@ body, .wp-site-blocks {
     margin: 0;
 }
 
-.manitas-header .main-menu a {
+/* Размер букв меню такой же, как в цитатах (1.5rem) */
+.manitas-header .main-menu a, 
+.wp-block-navigation-item__content {
     text-decoration: none;
-    color: var(--manitas-dark-text);
+    color: var(--manitas-dark-text) !important;
     font-weight: 400;
+    font-size: 1.5rem !important; /* Как в цитатах */
     transition: font-weight 0.2s ease;
 }
 
@@ -64,20 +67,53 @@ h1 {
     font-family: 'Playfair Display', serif !important;
     font-style: italic !important;
     color: var(--manitas-terracotta) !important;
-    font-size: clamp(2.5rem, 6vw, 4.5rem) !important; /* XL презентабельный заголовок */
+    font-size: clamp(2.5rem, 6vw, 4.5rem) !important;
     text-align: center;
 }
 
-/* Тексты "Comment ça marche?" и "Un moment suspendu..." (H2 - МЕНЬШЕ) */
 h2, .wp-block-heading {
     font-family: 'Playfair Display', serif !important;
     font-style: italic !important;
     color: var(--manitas-terracotta) !important;
-    font-size: clamp(1.8rem, 4vw, 2.5rem) !important; /* Заметно меньше чем H1 */
+    font-size: clamp(1.8rem, 4vw, 2.5rem) !important;
     text-align: center;
 }
 
-/* --- ВИЗИТКИ (ПРЕЦИЗИОННЫЕ 8x4 см + ТВОЯ МАГИЯ) --- */
+/* Стиль цитат (как ориентир для меню) */
+blockquote p, .wp-block-quote p {
+    font-size: 1.5rem !important;
+    font-style: italic;
+}
+
+/* --- КНОПКИ (УНИФИКАЦИЯ ПО ОБРАЗЦУ "Offrir un Bon Cadeau") --- */
+/* Применяем ко всем кнопкам WordPress и нашим кастомным кнопкам */
+.wp-block-button__link, 
+.steel-btn,
+button:not(.social-icons button) {
+    background-color: var(--manitas-terracotta) !important;
+    color: white !important;
+    border-radius: 50px !important;
+    padding: 15px 35px !important;
+    font-family: 'Plus Jakarta Sans', sans-serif !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1px !important;
+    font-size: 0.9rem !important;
+    text-decoration: none !important;
+    display: inline-block !important;
+    border: none !important;
+    transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+    cursor: pointer !important;
+}
+
+.wp-block-button__link:hover, 
+.steel-btn:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 10px 20px rgba(192, 122, 90, 0.2) !important;
+    opacity: 0.9 !important;
+}
+
+/* --- ВИЗИТКИ (ПРЕЦИЗИОННЫЕ 8x4 см) --- */
 .visites-container {
     display: flex !important;
     flex-wrap: wrap !important;
@@ -99,7 +135,6 @@ h2, .wp-block-heading {
     margin: 10px !important;
 }
 
-/* Твоя магия внутреннего контейнера */
 .ma-banniere-carte .wp-block-cover__inner-container,
 .ma-banniere-carte .wp-block-group__inner-container {
     display: flex !important;
@@ -167,7 +202,7 @@ h2, .wp-block-heading {
 .social-icons svg {
     width: 32px;
     height: 32px;
-    fill: white; /* Иконки будут белыми */
+    fill: white;
     transition: transform 0.3s ease;
 }
 
