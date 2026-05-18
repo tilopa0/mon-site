@@ -132,13 +132,6 @@ button:not(.social-icons button) {
     cursor: pointer !important;
 }
 
-.wp-block-button__link:hover, 
-.steel-btn:hover {
-    transform: translateY(-2px) !important;
-    box-shadow: 0 10px 20px rgba(192, 122, 90, 0.2) !important;
-    opacity: 0.9 !important;
-}
-
 /* --- СЛОГАН --- */
 .manitas-slogan,
 h2.manitas-slogan,
@@ -174,22 +167,6 @@ h2.manitas-slogan,
     margin: 15px auto !important;
 }
 
-.ma-banniere-carte h2 {
-    font-family: 'Playfair Display', serif !important;
-    font-style: italic !important;
-    font-size: 2.2rem !important;
-    color: var(--manitas-terracotta) !important;
-    margin: 0 !important;
-}
-
-.ma-banniere-carte h3 {
-    font-family: 'Plus Jakarta Sans', sans-serif !important;
-    font-weight: 700 !important;
-    font-size: 1.3rem !important;
-    color: var(--manitas-dark-text) !important;
-    margin: 10px 0 !important;
-}
-
 .ma-banniere-carte p {
     font-size: 1.8rem !important;
     font-family: 'Plus Jakarta Sans', sans-serif !important;
@@ -198,72 +175,63 @@ h2.manitas-slogan,
     color: var(--manitas-dark-text) !important;
 }
 
-/* --- ГАРАНТИРОВАННАЯ КАРУСЕЛЬ --- */
-/* Принудительно сбрасываем стандартную сетку WordPress для этого блока */
-.wp-block-gallery.manitas-carousel,
-.manitas-carousel {
+/* --- КАРУСЕЛЬ (ОБНОВЛЕННАЯ ВЕРСИЯ) --- */
+.manitas-carousel, 
+.wp-block-gallery.manitas-carousel {
     display: flex !important;
     flex-direction: row !important;
     flex-wrap: nowrap !important;
     overflow-x: auto !important;
-    overflow-y: hidden !important;
     scroll-snap-type: x mandatory !important;
     scroll-behavior: smooth !important;
-    gap: 30px !important;
+    gap: 20px !important;
     padding: 40px 10% !important;
     scrollbar-width: none !important;
-    -ms-overflow-style: none !important;
 }
 
-.manitas-carousel::-webkit-scrollbar {
-    display: none !important;
-}
+.manitas-carousel::-webkit-scrollbar { display: none; }
 
-/* Элементы слайдера */
+/* Каждый слайд */
+.manitas-carousel figure,
 .manitas-carousel .wp-block-image,
-.manitas-carousel .wp-block-gallery-item,
-.manitas-carousel figure {
-    flex: 0 0 80% !important;
-    width: 80% !important;
-    max-width: 80% !important;
-    min-width: 80% !important;
+.manitas-carousel li {
+    flex: 0 0 85% !important; /* Увеличили ширину слайда */
+    min-width: 85% !important;
     scroll-snap-align: center !important;
+    position: relative !important; /* Важно для текста */
     margin: 0 !important;
-    position: relative !important;
-    display: block !important;
 }
 
 .manitas-carousel img {
     width: 100% !important;
-    height: 600px !important;
+    height: 600px !important; /* Одинаковая высота */
     object-fit: cover !important;
     border-radius: 40px !important;
 }
 
-/* Текст на картинках (стиль кнопки, снизу справа) */
+/* Текст на картинке (как кнопка) */
 .manitas-carousel figcaption,
 .manitas-carousel .wp-element-caption {
     position: absolute !important;
-    bottom: 40px !important;
-    right: 40px !important;
+    bottom: 30px !important;
+    right: 30px !important;
     background-color: var(--manitas-terracotta) !important;
     color: white !important;
-    padding: 15px 35px !important;
+    padding: 12px 25px !important;
     border-radius: 50px !important;
-    font-family: 'Plus Jakarta Sans', sans-serif !important;
+    font-size: 0.85rem !important;
     font-weight: 600 !important;
     text-transform: uppercase !important;
-    font-size: 0.9rem !important;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.2) !important;
-    display: block !important;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1) !important;
+    z-index: 5 !important;
     width: auto !important;
-    text-align: center !important;
+    max-width: 80% !important;
 }
 
 @media (max-width: 768px) {
-    .manitas-carousel img { height: 400px !important; }
-    .manitas-carousel .wp-block-image { flex: 0 0 90% !important; }
-    .manitas-carousel figcaption { bottom: 20px !important; right: 20px !important; padding: 10px 20px !important; }
+    .manitas-carousel figure { flex: 0 0 95% !important; min-width: 95% !important; }
+    .manitas-carousel img { height: 450px !important; }
+    .manitas-carousel figcaption { bottom: 20px !important; right: 20px !important; font-size: 0.7rem !important; }
 }
 
 /* --- ИЗОБРАЖЕНИЯ И ВИДЕО --- */
@@ -274,6 +242,12 @@ h2.manitas-slogan,
     height: 900px !important;
     object-fit: cover !important;
     border-radius: 40px;
+}
+
+.wp-block-video video {
+    height: 1200px !important;
+    object-fit: cover !important;
+    border-radius: 20px;
 }
 
 /* --- ФУТЕР --- */
