@@ -231,27 +231,41 @@ h2.manitas-slogan,
     overflow-x: auto !important;
     scroll-snap-type: x mandatory !important;
     scroll-behavior: smooth !important;
-    gap: 20px !important;
-    padding: 20px 0 !important;
-    scrollbar-width: none; /* Скрываем полосу прокрутки в Firefox */
+    gap: 30px !important;
+    padding: 40px 10% !important; /* Добавили отступы 10% по бокам, чтобы картинки не "резались" */
+    scrollbar-width: none; 
+    list-style: none !important; /* На случай, если галерея это список <ul> */
 }
 
 .manitas-carousel::-webkit-scrollbar {
-    display: none; /* Скрываем полосу прокрутки в Chrome/Safari */
+    display: none;
 }
 
 .manitas-carousel .wp-block-image,
-.manitas-carousel figure {
-    flex: 0 0 80% !important; /* Каждая картинка занимает 80% ширины */
+.manitas-carousel figure,
+.manitas-carousel .wp-block-gallery-item {
+    flex: 0 0 80% !important; /* Картинка занимает 80% ширины видимой зоны */
     scroll-snap-align: center !important;
     margin: 0 !important;
+    display: block !important;
 }
 
 .manitas-carousel img {
     width: 100% !important;
-    height: 500px !important; /* Фиксированная высота для карусели */
+    height: 600px !important; /* Немного увеличил высоту для красоты */
     object-fit: cover !important;
     border-radius: 40px !important;
+}
+
+/* На мобильных устройствах делаем картинки чуть шире */
+@media (max-width: 768px) {
+    .manitas-carousel {
+        padding: 20px 5% !important;
+        gap: 15px !important;
+    }
+    .manitas-carousel img {
+        height: 400px !important;
+    }
 }
 
 /* На больших экранах делаем картинки чуть меньше, чтобы было видно края соседних */
