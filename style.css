@@ -170,8 +170,8 @@ h2.manitas-slogan,
 }
 
 .ma-banniere-carte {
-    width: 8cm !important;
-    height: 6cm !important; /* Одинаковый размер для всех */
+    width: 16cm !important; /* Увеличено в 2 раза (было 8cm) */
+    height: 8cm !important; /* Пропорционально увеличено для лучшего вида */
     border-radius: 40px !important;
     overflow: hidden !important;
     box-shadow: 0 15px 40px rgba(0,0,0,0.08) !important;
