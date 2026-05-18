@@ -16,34 +16,30 @@ body, .wp-site-blocks {
 }
 
 /* --- ГЛОБАЛЬНЫЕ ТЕКСТОВЫЕ БЛОКИ И ОТСТУПЫ --- */
-/* Устанавливаем отступы 1см (ок. 38px) для десктопа и 5мм (ок. 19px) для мобильных */
 .wp-site-blocks > *, 
 .entry-content > *,
 .wp-block-group,
 .wp-block-columns {
-    padding: 38px !important; /* 1 см от краев */
-    line-height: 1.8 !important; /* Увеличенное расстояние между строчками */
-    font-weight: 300 !important; /* Тонкий, элегантный шрифт */
+    padding: 38px !important; 
+    line-height: 1.8 !important; 
+    font-weight: 300 !important; 
 }
 
-/* Исключение для хедера и футера, чтобы они не "раздувались" */
 .manitas-header, .manitas-footer-banner, .header-container, .footer-container {
     padding-top: 20px !important;
     padding-bottom: 20px !important;
 }
 
-/* Адаптация для мобильных устройств */
 @media (max-width: 768px) {
     .wp-site-blocks > *, 
     .entry-content > *,
     .wp-block-group,
     .wp-block-columns {
-        padding: 19px !important; /* Примерно 5 мм - оптимально для мобильных */
+        padding: 19px !important;
     }
 }
 
 /* --- АКЦЕНТИРОВАНИЕ ТЕКСТА --- */
-/* Используй этот класс, чтобы сделать текст жирным (например, для концепции) */
 .manitas-highlight {
     font-weight: 700 !important;
 }
@@ -81,13 +77,12 @@ body, .wp-site-blocks {
     margin: 0;
 }
 
-/* Размер букв меню такой же, как в цитатах (1.5rem) */
 .manitas-header .main-menu a, 
 .wp-block-navigation-item__content {
     text-decoration: none;
     color: var(--manitas-dark-text) !important;
     font-weight: 400;
-    font-size: 1.5rem !important; /* Как в цитатах */
+    font-size: 1.5rem !important; 
     transition: font-weight 0.2s ease;
 }
 
@@ -112,14 +107,12 @@ h2, .wp-block-heading {
     text-align: center;
 }
 
-/* Стиль цитат (как ориентир для меню) */
 blockquote p, .wp-block-quote p {
     font-size: 1.5rem !important;
     font-style: italic;
 }
 
-/* --- КНОПКИ (УНИФИКАЦИЯ ПО ОБРАЗЦУ "Offrir un Bon Cadeau") --- */
-/* Применяем ко всем кнопкам WordPress и нашим кастомным кнопкам */
+/* --- КНОПКИ --- */
 .wp-block-button__link, 
 .steel-btn,
 button:not(.social-icons button) {
@@ -146,57 +139,41 @@ button:not(.social-icons button) {
     opacity: 0.9 !important;
 }
 
-/* --- СТИЛИЗАЦИЯ СЛОГАНА MANITAS --- */
-/* Этот стиль сделает фразу "L’art de la céramique..." в 1.5 раза больше и жирнее */
+/* --- СЛОГАН --- */
 .manitas-slogan,
 h2.manitas-slogan,
 .wp-block-heading.manitas-slogan {
-    font-size: clamp(2.5rem, 5vw, 3.5rem) !important; /* Увеличено в ~1.5 раза от стандартного H2 */
+    font-size: clamp(2.5rem, 5vw, 3.5rem) !important;
     font-weight: 700 !important;
     text-align: left !important;
-    margin-left: 0 !important;
-    padding-left: 20px; /* Небольшой отступ от края для эстетики */
+    padding-left: 20px;
     max-width: 1000px;
     line-height: 1.2 !important;
 }
 
-/* --- ВИЗИТКИ (ПРЕЦИЗИОННЫЕ И ЦЕНТРИРОВАННЫЕ) --- */
+/* --- ВИЗИТКИ --- */
 .visites-container {
     display: flex !important;
     flex-wrap: wrap !important;
-    justify-content: center !important; /* Центрируем карточки в ряду */
+    justify-content: center !important;
     align-items: center !important;
     gap: 30px !important;
     margin: 60px auto !important;
     width: 100% !important;
-    max-width: 100% !important;
 }
 
 .ma-banniere-carte {
     width: 16cm !important;
     height: 8cm !important;
     border-radius: 40px !important;
-    overflow: hidden !important;
     box-shadow: 0 15px 40px rgba(0,0,0,0.08) !important;
     background-color: #ffffff !important;
     display: flex !important;
     align-items: center !important; 
     justify-content: center !important;
-    margin: 15px auto !important; /* "auto" гарантирует центрирование, если карточка одна в строке */
-    transition: transform 0.3s ease !important;
-}
-.ma-banniere-carte .wp-block-cover__inner-container,
-.ma-banniere-carte .wp-block-group__inner-container {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    justify-content: center !important;
-    text-align: center !important;
-    width: 100% !important;
-    padding: 20px !important;
+    margin: 15px auto !important;
 }
 
-/* Цифра - стиль H2 */
 .ma-banniere-carte h2 {
     font-family: 'Playfair Display', serif !important;
     font-style: italic !important;
@@ -205,7 +182,6 @@ h2.manitas-slogan,
     margin: 0 !important;
 }
 
-/* Заголовок - стиль H3 */
 .ma-banniere-carte h3 {
     font-family: 'Plus Jakarta Sans', sans-serif !important;
     font-weight: 700 !important;
@@ -214,42 +190,46 @@ h2.manitas-slogan,
     margin: 10px 0 !important;
 }
 
-/* Текст - обычный тонкий шрифт, увеличенный в 2 раза */
 .ma-banniere-carte p {
     font-size: 1.8rem !important;
     font-family: 'Plus Jakarta Sans', sans-serif !important;
     font-weight: 300 !important;
     line-height: 1.3 !important;
     color: var(--manitas-dark-text) !important;
-    margin: 0 !important;
 }
 
-/* --- КАРУСЕЛЬ ИЗОБРАЖЕНИЙ --- */
-/* Применяется к блоку Галерея (Галерея -> Дополнительно -> Класс: manitas-carousel) */
-/* --- КАРУСЕЛЬ ИЗОБРАЖЕНИЙ --- */
+/* --- ГАРАНТИРОВАННАЯ КАРУСЕЛЬ --- */
+/* Принудительно сбрасываем стандартную сетку WordPress для этого блока */
+.wp-block-gallery.manitas-carousel,
 .manitas-carousel {
     display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
     overflow-x: auto !important;
+    overflow-y: hidden !important;
     scroll-snap-type: x mandatory !important;
     scroll-behavior: smooth !important;
     gap: 30px !important;
     padding: 40px 10% !important;
-    scrollbar-width: none; 
-    list-style: none !important;
+    scrollbar-width: none !important;
+    -ms-overflow-style: none !important;
 }
 
 .manitas-carousel::-webkit-scrollbar {
-    display: none;
+    display: none !important;
 }
 
-/* Слайды (поддержка новой структуры с текстом) */
+/* Элементы слайдера */
 .manitas-carousel .wp-block-image,
-.manitas-carousel figure,
-.manitas-carousel li {
+.manitas-carousel .wp-block-gallery-item,
+.manitas-carousel figure {
     flex: 0 0 80% !important;
+    width: 80% !important;
+    max-width: 80% !important;
+    min-width: 80% !important;
     scroll-snap-align: center !important;
     margin: 0 !important;
-    position: relative !important; /* Для позиционирования текста внутри */
+    position: relative !important;
     display: block !important;
 }
 
@@ -258,48 +238,32 @@ h2.manitas-slogan,
     height: 600px !important;
     object-fit: cover !important;
     border-radius: 40px !important;
-    display: block !important;
 }
 
-/* Текст на картинках (стилизация под кнопку, снизу справа) */
+/* Текст на картинках (стиль кнопки, снизу справа) */
 .manitas-carousel figcaption,
 .manitas-carousel .wp-element-caption {
     position: absolute !important;
-    bottom: 30px !important;
-    right: 30px !important;
-    background-color: rgba(192, 122, 90, 0.9) !important; /* Терракотовый с прозрачностью */
+    bottom: 40px !important;
+    right: 40px !important;
+    background-color: var(--manitas-terracotta) !important;
     color: white !important;
-    padding: 10px 25px !important;
+    padding: 15px 35px !important;
     border-radius: 50px !important;
     font-family: 'Plus Jakarta Sans', sans-serif !important;
     font-weight: 600 !important;
     text-transform: uppercase !important;
-    font-size: 0.8rem !important;
-    letter-spacing: 1px !important;
-    z-index: 10 !important;
-    margin: 0 !important;
+    font-size: 0.9rem !important;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2) !important;
+    display: block !important;
+    width: auto !important;
+    text-align: center !important;
 }
 
-/* На мобильных устройствах */
 @media (max-width: 768px) {
-    .manitas-carousel {
-        padding: 20px 5% !important;
-    }
-    .manitas-carousel img {
-        height: 400px !important;
-    }
-    .manitas-carousel .wp-block-image,
-    .manitas-carousel figure,
-    .manitas-carousel li {
-        flex: 0 0 90% !important;
-    }
-}
-
-/* На больших экранах делаем картинки чуть меньше, чтобы было видно края соседних */
-@media (min-width: 1024px) {
-    .manitas-carousel .wp-block-image {
-        flex: 0 0 60% !important;
-    }
+    .manitas-carousel img { height: 400px !important; }
+    .manitas-carousel .wp-block-image { flex: 0 0 90% !important; }
+    .manitas-carousel figcaption { bottom: 20px !important; right: 20px !important; padding: 10px 20px !important; }
 }
 
 /* --- ИЗОБРАЖЕНИЯ И ВИДЕО --- */
@@ -312,89 +276,23 @@ h2.manitas-slogan,
     border-radius: 40px;
 }
 
-.wp-block-video video {
-    height: 1200px !important;
-    object-fit: cover !important;
-    border-radius: 20px;
-}
-
-/* --- ШАЛФЕЕВЫЙ ФУТЕР С СОЦСЕТЯМИ --- */
+/* --- ФУТЕР --- */
 .manitas-footer-banner {
     background-color: var(--manitas-sage) !important;
-    padding: 60px 0 40px 0;
+    padding: 40px 0 !important;
     color: white !important;
     text-align: center;
     width: 100%;
-    margin-top: 60px;
-}
-
-.footer-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-.social-icons {
-    display: flex;
-    justify-content: center;
-    gap: 25px;
-    margin-bottom: 30px;
-}
-
-/* --- ФИНАЛЬНАЯ ЧИСТКА ФУТЕРА --- */
-/* Скрываем стандартный брендинг WordPress (Twenty Twenty-Five, Conçu avec WordPress) */
-footer:not(.manitas-footer-banner),
-.wp-block-template-part-footer,
-.site-info,
-.powered-by {
-    display: none !important;
-}
-
-/* Скрываем лишние ссылки и группы внутри нашего контейнера, если они там есть */
-.footer-container > ul,
-.footer-container > div:not(.social-icons):not(.footer-links):not(.copyright) {
-    display: none !important;
-}
-
-/* --- КНОПКА BON CADEAU НА КАРТОЧКАХ --- */
-.ma-banniere-carte .wp-block-button {
-    margin-top: 15px !important;
-}
-
-.ma-banniere-carte .wp-block-button__link {
-    font-size: 0.75rem !important; /* Делаем чуть меньше для визитки */
-    padding: 8px 20px !important;
 }
 
 .social-icons svg {
     width: 32px;
     height: 32px;
     fill: white;
-    transition: transform 0.3s ease;
 }
 
-.social-icons a:hover svg {
-    transform: scale(1.2);
-}
-
-.footer-links {
-    margin-bottom: 20px;
-}
-
-.footer-links a {
-    color: white !important;
-    text-decoration: none;
-    font-size: 0.9rem;
-    opacity: 0.8;
-    transition: opacity 0.3s ease;
-}
-
-.footer-links a:hover {
-    opacity: 1;
-    text-decoration: underline;
-}
-
-.copyright {
-    font-size: 0.8rem;
-    opacity: 0.6;
+footer:not(.manitas-footer-banner),
+.wp-block-template-part-footer,
+.site-info {
+    display: none !important;
 }
