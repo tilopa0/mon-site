@@ -113,6 +113,20 @@ button:not(.social-icons button) {
     opacity: 0.9 !important;
 }
 
+/* --- СТИЛИЗАЦИЯ СЛОГАНА MANITAS --- */
+/* Этот стиль сделает фразу "L’art de la céramique..." в 1.5 раза больше и жирнее */
+.manitas-slogan,
+h2.manitas-slogan,
+.wp-block-heading.manitas-slogan {
+    font-size: clamp(2.5rem, 5vw, 3.5rem) !important; /* Увеличено в ~1.5 раза от стандартного H2 */
+    font-weight: 700 !important;
+    text-align: left !important;
+    margin-left: 0 !important;
+    padding-left: 20px; /* Небольшой отступ от края для эстетики */
+    max-width: 1000px;
+    line-height: 1.2 !important;
+}
+
 /* --- ВИЗИТКИ (ПРЕЦИЗИОННЫЕ 8x4 см) --- */
 .visites-container {
     display: flex !important;
