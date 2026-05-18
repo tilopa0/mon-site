@@ -199,6 +199,24 @@ button:not(.social-icons button) {
     margin-bottom: 30px;
 }
 
+/* --- ФИНАЛЬНАЯ ЧИСТКА ФУТЕРА --- */
+/* Скрываем лишние ссылки (Blog, FAQ, и т.д.), если они приходят из WP */
+.wp-block-navigation:not(.manitas-header .wp-block-navigation),
+.footer-container > ul,
+.footer-container > div:not(.social-icons):not(.footer-links):not(.copyright) {
+    display: none !important;
+}
+
+/* --- КНОПКА BON CADEAU НА КАРТОЧКАХ --- */
+.ma-banniere-carte .wp-block-button {
+    margin-top: 15px !important;
+}
+
+.ma-banniere-carte .wp-block-button__link {
+    font-size: 0.75rem !important; /* Делаем чуть меньше для визитки */
+    padding: 8px 20px !important;
+}
+
 .social-icons svg {
     width: 32px;
     height: 32px;
