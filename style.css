@@ -15,6 +15,33 @@ body, .wp-site-blocks {
     color: var(--manitas-dark-text) !important;
 }
 
+/* --- ГЛОБАЛЬНЫЕ ТЕКСТОВЫЕ БЛОКИ И ОТСТУПЫ --- */
+/* Устанавливаем отступы 1см (ок. 38px) для десктопа и 5мм (ок. 19px) для мобильных */
+.wp-site-blocks > *, 
+.entry-content > *,
+.wp-block-group,
+.wp-block-columns {
+    padding: 38px !important; /* 1 см от краев */
+    line-height: 1.8 !important; /* Увеличенное расстояние между строчками */
+    font-weight: 300 !important; /* Тонкий, элегантный шрифт */
+}
+
+/* Исключение для хедера и футера, чтобы они не "раздувались" */
+.manitas-header, .manitas-footer-banner, .header-container, .footer-container {
+    padding-top: 20px !important;
+    padding-bottom: 20px !important;
+}
+
+/* Адаптация для мобильных устройств */
+@media (max-width: 768px) {
+    .wp-site-blocks > *, 
+    .entry-content > *,
+    .wp-block-group,
+    .wp-block-columns {
+        padding: 19px !important; /* Примерно 5 мм - оптимально для мобильных */
+    }
+}
+
 /* --- ХЕДЕР (ЛОГО СЛЕВА, МЕНЮ СПРАВА) --- */
 .manitas-header {
     background: var(--manitas-cream);
