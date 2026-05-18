@@ -164,24 +164,27 @@ h2.manitas-slogan,
 .visites-container {
     display: flex !important;
     flex-wrap: wrap !important;
-    justify-content: center !important; /* Центрируем карточки */
+    justify-content: center !important; /* Центрируем карточки в ряду */
+    align-items: center !important;
     gap: 30px !important;
     margin: 60px auto !important;
+    width: 100% !important;
+    max-width: 100% !important;
 }
 
 .ma-banniere-carte {
-    width: 16cm !important; /* Увеличено в 2 раза (было 8cm) */
-    height: 8cm !important; /* Пропорционально увеличено для лучшего вида */
+    width: 16cm !important;
+    height: 8cm !important;
     border-radius: 40px !important;
     overflow: hidden !important;
     box-shadow: 0 15px 40px rgba(0,0,0,0.08) !important;
-    background-color: #ffffff !important; /* Белый фон */
+    background-color: #ffffff !important;
     display: flex !important;
     align-items: center !important; 
     justify-content: center !important;
-    margin: 15px !important;
+    margin: 15px auto !important; /* "auto" гарантирует центрирование, если карточка одна в строке */
+    transition: transform 0.3s ease !important;
 }
-
 .ma-banniere-carte .wp-block-cover__inner-container,
 .ma-banniere-carte .wp-block-group__inner-container {
     display: flex !important;
