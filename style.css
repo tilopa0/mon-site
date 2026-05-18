@@ -226,45 +226,72 @@ h2.manitas-slogan,
 
 /* --- КАРУСЕЛЬ ИЗОБРАЖЕНИЙ --- */
 /* Применяется к блоку Галерея (Галерея -> Дополнительно -> Класс: manitas-carousel) */
+/* --- КАРУСЕЛЬ ИЗОБРАЖЕНИЙ --- */
 .manitas-carousel {
     display: flex !important;
     overflow-x: auto !important;
     scroll-snap-type: x mandatory !important;
     scroll-behavior: smooth !important;
     gap: 30px !important;
-    padding: 40px 10% !important; /* Добавили отступы 10% по бокам, чтобы картинки не "резались" */
+    padding: 40px 10% !important;
     scrollbar-width: none; 
-    list-style: none !important; /* На случай, если галерея это список <ul> */
+    list-style: none !important;
 }
 
 .manitas-carousel::-webkit-scrollbar {
     display: none;
 }
 
+/* Слайды (поддержка новой структуры с текстом) */
 .manitas-carousel .wp-block-image,
 .manitas-carousel figure,
-.manitas-carousel .wp-block-gallery-item {
-    flex: 0 0 80% !important; /* Картинка занимает 80% ширины видимой зоны */
+.manitas-carousel li {
+    flex: 0 0 80% !important;
     scroll-snap-align: center !important;
     margin: 0 !important;
+    position: relative !important; /* Для позиционирования текста внутри */
     display: block !important;
 }
 
 .manitas-carousel img {
     width: 100% !important;
-    height: 600px !important; /* Немного увеличил высоту для красоты */
+    height: 600px !important;
     object-fit: cover !important;
     border-radius: 40px !important;
+    display: block !important;
 }
 
-/* На мобильных устройствах делаем картинки чуть шире */
+/* Текст на картинках (стилизация под кнопку, снизу справа) */
+.manitas-carousel figcaption,
+.manitas-carousel .wp-element-caption {
+    position: absolute !important;
+    bottom: 30px !important;
+    right: 30px !important;
+    background-color: rgba(192, 122, 90, 0.9) !important; /* Терракотовый с прозрачностью */
+    color: white !important;
+    padding: 10px 25px !important;
+    border-radius: 50px !important;
+    font-family: 'Plus Jakarta Sans', sans-serif !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+    font-size: 0.8rem !important;
+    letter-spacing: 1px !important;
+    z-index: 10 !important;
+    margin: 0 !important;
+}
+
+/* На мобильных устройствах */
 @media (max-width: 768px) {
     .manitas-carousel {
         padding: 20px 5% !important;
-        gap: 15px !important;
     }
     .manitas-carousel img {
         height: 400px !important;
+    }
+    .manitas-carousel .wp-block-image,
+    .manitas-carousel figure,
+    .manitas-carousel li {
+        flex: 0 0 90% !important;
     }
 }
 
