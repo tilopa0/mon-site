@@ -200,8 +200,15 @@ button:not(.social-icons button) {
 }
 
 /* --- ФИНАЛЬНАЯ ЧИСТКА ФУТЕРА --- */
-/* Скрываем лишние ссылки (Blog, FAQ, и т.д.), если они приходят из WP */
-.wp-block-navigation:not(.manitas-header .wp-block-navigation),
+/* Скрываем стандартный брендинг WordPress (Twenty Twenty-Five, Conçu avec WordPress) */
+footer:not(.manitas-footer-banner),
+.wp-block-template-part-footer,
+.site-info,
+.powered-by {
+    display: none !important;
+}
+
+/* Скрываем лишние ссылки и группы внутри нашего контейнера, если они там есть */
 .footer-container > ul,
 .footer-container > div:not(.social-icons):not(.footer-links):not(.copyright) {
     display: none !important;
