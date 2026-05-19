@@ -176,24 +176,27 @@ h2.manitas-slogan,
     object-fit: cover !important;
 }
 
-/* Текст на картинке (авто-стиль кнопки) */
+/* Текст на картинке (минималистичный, снизу справа) */
 .manitas-carousel .wp-block-cover__inner-container,
 .manitas-carousel figcaption,
-.manitas-carousel p:last-child {
+.manitas-carousel p:last-child,
+.manitas-carousel .wp-block-cover-text {
     position: absolute !important;
-    bottom: 30px !important;
-    right: 30px !important;
+    bottom: 20px !important;
+    right: 20px !important;
     left: auto !important;
     top: auto !important;
-    background-color: var(--manitas-terracotta) !important;
-    color: white !important;
-    padding: 12px 25px !important;
-    border-radius: 50px !important;
-    font-size: 0.85rem !important;
-    font-weight: 600 !important;
+    background-color: transparent !important; /* Убрали подложку */
+    color: white !important; /* Белый цвет */
+    padding: 0 !important;
+    border-radius: 0 !important;
+    font-size: 0.5rem !important; /* Уменьшили в 3 раза */
+    font-weight: 400 !important;
     text-transform: uppercase !important;
+    box-shadow: none !important; /* Убрали тень */
     width: auto !important;
     z-index: 10 !important;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5); /* Добавил легкую тень тексту для читаемости на светлом фоне */
 }
 
 @media (max-width: 768px) {
