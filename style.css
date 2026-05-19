@@ -44,7 +44,7 @@ body, .wp-site-blocks {
     font-weight: 700 !important;
 }
 
-/* --- ХЕДЕР (ЛОГО СЛЕВА, МЕНЮ СПРАВА) --- */
+/* --- ХЕДЕР --- */
 .manitas-header {
     background: var(--manitas-cream);
     padding: 20px 0;
@@ -86,9 +86,7 @@ body, .wp-site-blocks {
     transition: font-weight 0.2s ease;
 }
 
-.manitas-header .main-menu a:hover {
-    font-weight: 700;
-}
+.manitas-header .main-menu a:hover { font-weight: 700; }
 
 /* --- ИЕРАРХИЯ ЗАГОЛОВКОВ --- */
 h1 {
@@ -175,36 +173,52 @@ h2.manitas-slogan,
     color: var(--manitas-dark-text) !important;
 }
 
-/* --- КАРУСЕЛЬ (ОБНОВЛЕННАЯ ВЕРСИЯ) --- */
-.manitas-carousel, 
-.wp-block-gallery.manitas-carousel {
+/* --- ГАРАНТИРОВАННАЯ КАРУСЕЛЬ (УЛЬТИМАТИВНЫЙ ВАРИАНТ) --- */
+/* Работает даже если WP навязывает Grid или Columns */
+.manitas-carousel {
     display: flex !important;
     flex-direction: row !important;
     flex-wrap: nowrap !important;
     overflow-x: auto !important;
+    overflow-y: hidden !important;
     scroll-snap-type: x mandatory !important;
     scroll-behavior: smooth !important;
     gap: 20px !important;
     padding: 40px 10% !important;
     scrollbar-width: none !important;
+    width: 100% !important;
+    max-width: 100% !important;
+}
+
+/* Принудительно отключаем Grid у вложенных контейнеров WP */
+.manitas-carousel, 
+.manitas-carousel * {
+    display: block; /* Сбрасываем всё в блоки по умолчанию */
+}
+
+.manitas-carousel {
+    display: flex !important; /* Кроме главного контейнера */
 }
 
 .manitas-carousel::-webkit-scrollbar { display: none; }
 
-/* Каждый слайд */
+/* Элементы слайдера - максимально жестко фиксируем размер */
 .manitas-carousel figure,
 .manitas-carousel .wp-block-image,
-.manitas-carousel li {
-    flex: 0 0 85% !important; /* Увеличили ширину слайда */
+.manitas-carousel li,
+.manitas-carousel .wp-block-gallery-item {
+    flex: 0 0 85% !important; 
     min-width: 85% !important;
+    max-width: 85% !important;
     scroll-snap-align: center !important;
-    position: relative !important; /* Важно для текста */
+    position: relative !important;
     margin: 0 !important;
+    display: block !important;
 }
 
 .manitas-carousel img {
     width: 100% !important;
-    height: 600px !important; /* Одинаковая высота */
+    height: 600px !important;
     object-fit: cover !important;
     border-radius: 40px !important;
 }
@@ -224,8 +238,9 @@ h2.manitas-slogan,
     text-transform: uppercase !important;
     box-shadow: 0 10px 20px rgba(0,0,0,0.1) !important;
     z-index: 5 !important;
-    width: auto !important;
-    max-width: 80% !important;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
 }
 
 @media (max-width: 768px) {
