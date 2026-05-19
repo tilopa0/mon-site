@@ -176,27 +176,36 @@ h2.manitas-slogan,
     object-fit: cover !important;
 }
 
-/* Текст на картинке (минималистичный, снизу справа) */
+/* Текст на картинке (минималистичный, всё справа снизу) */
 .manitas-carousel .wp-block-cover__inner-container,
 .manitas-carousel figcaption,
-.manitas-carousel p:last-child,
+.manitas-carousel .wp-element-caption,
 .manitas-carousel .wp-block-cover-text {
     position: absolute !important;
     bottom: 20px !important;
     right: 20px !important;
     left: auto !important;
     top: auto !important;
-    background-color: transparent !important; /* Убрали подложку */
-    color: white !important; /* Белый цвет */
+    background-color: transparent !important;
+    color: white !important;
     padding: 0 !important;
-    border-radius: 0 !important;
-    font-size: 0.5rem !important; /* Уменьшили в 3 раза */
-    font-weight: 400 !important;
-    text-transform: uppercase !important;
-    box-shadow: none !important; /* Убрали тень */
     width: auto !important;
+    max-width: 250px !important; /* Ограничиваем ширину, чтобы текст не растягивался */
+    text-align: right !important; /* Весь текст внутри блока прижимаем вправо */
     z-index: 10 !important;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.5); /* Добавил легкую тень тексту для читаемости на светлом фоне */
+}
+
+/* Унификация размера всех букв внутри слайда */
+.manitas-carousel .wp-block-cover__inner-container *,
+.manitas-carousel figcaption,
+.manitas-carousel p {
+    font-size: 0.8rem !important; /* Компактный, читабельный размер для всех элементов */
+    font-weight: 400 !important;
+    line-height: 1.2 !important;
+    margin: 0 !important;
+    color: white !important;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.6);
+    text-transform: uppercase;
 }
 
 @media (max-width: 768px) {
