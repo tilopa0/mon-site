@@ -199,6 +199,31 @@ blockquote p, .wp-block-quote p {
     text-transform: uppercase !important;
 }
 
+/* --- АДАПТАЦИЯ ВИДЕО (МОБИЛЬНЫЙ ФОРМАТ НА ВСЕХ ЭКРАНАХ) --- */
+/* Делаем так, чтобы видео всегда выглядело как экран телефона */
+.wp-block-video, 
+.wp-block-video video {
+    max-width: 380px !important; /* Стандартная ширина мобильного экрана */
+    width: 100% !important;
+    height: auto !important;
+    max-height: 80vh !important; /* Чтобы видео не вылезало за пределы экрана по высоте */
+    margin-left: auto !important;
+    margin-right: auto !important;
+    border-radius: 40px !important; /* Скругление как у современного смартфона */
+    box-shadow: 0 20px 50px rgba(0,0,0,0.1) !important;
+    display: block !important;
+}
+
+/* На мобильных устройствах разрешаем занимать больше места, если нужно */
+@media (max-width: 768px) {
+    .wp-block-video, 
+    .wp-block-video video {
+        max-width: 100% !important;
+        max-height: 70vh !important;
+        border-radius: 30px !important;
+    }
+}
+
 /* --- ФУТЕР --- */
 .manitas-footer-banner { 
     background-color: var(--manitas-sage) !important; 
