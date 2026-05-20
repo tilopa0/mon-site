@@ -200,5 +200,40 @@ blockquote p, .wp-block-quote p {
 }
 
 /* --- ФУТЕР --- */
-.manitas-footer-banner { background-color: var(--manitas-sage) !important; color: white !important; text-align: center; padding: 40px 0 !important; }
+.manitas-footer-banner { 
+    background-color: var(--manitas-sage) !important; 
+    color: white !important; 
+    text-align: center; 
+    padding: 60px 0 40px 0 !important; 
+}
+
+.social-icons {
+    display: flex !important;
+    justify-content: center !important;
+    gap: 25px !important;
+    margin-bottom: 20px !important;
+}
+
+.social-icons svg {
+    width: 32px !important; /* Возвращаем нормальный размер */
+    height: 32px !important;
+    fill: white !important;
+    transition: transform 0.3s ease !important;
+}
+
+.social-icons a:hover svg {
+    transform: scale(1.2) !important;
+}
+
+.footer-links {
+    margin-bottom: 15px !important;
+}
+
+.footer-links a {
+    color: white !important;
+    text-decoration: none !important;
+    font-size: 0.9rem !important;
+    opacity: 0.8 !important;
+}
+
 footer:not(.manitas-footer-banner), .wp-block-template-part-footer, .site-info { display: none !important; }
